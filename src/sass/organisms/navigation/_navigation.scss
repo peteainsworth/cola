@@ -1,0 +1,271 @@
+//////////////////////////////
+// Navigation Organism
+
+// @import "mixins";
+// @import "extends";
+//////////////////////////////
+
+@mixin cola-navigation {
+
+  #toolbar {
+    @include clearfix;
+    @include inverted($button-border-hover: $white);
+    border-bottom: 1px solid $white;
+    min-height: $base-spacing*3;
+    position: relative;
+    width: 100%;
+    z-index: 1001;
+
+    @include breakpoint($hemidemisemiquaver, true) {
+      height: $base-spacing*3;
+      position:fixed;
+      top: 0;
+      left: 0;
+    }
+    // Nav menu
+    &--wrapper {
+      @include breakpoint($breve, true) {
+        @include container($breve);
+      }
+    }
+
+    .navigation--button {
+      top: $base-spacing/2;
+      @include breakpoint($hemidemisemiquaver, true) {
+        @include vertical-center;
+        position: absolute;
+      }
+      &[data-position="left"] {
+        margin-left: $base-spacing/2;
+        @include breakpoint($breve, true) {
+          display: none;
+        }
+      }
+      &[data-position="right"] {
+        margin-right: $base-spacing/2;
+        @include breakpoint($crotchet, true) {
+          display: none;
+        }
+      }
+      &.button {
+        padding: em(6px);
+      }
+    }
+  }
+
+  #social-menu {
+    &.navigation--menu--RIGHT {
+      padding: 0;
+      @include breakpoint($hemidemisemiquaver, true) {
+        position: fixed;
+      }
+      @include breakpoint($crotchet, true) {
+        background-color: transparent;
+        top: $base-spacing;
+        position: absolute;
+        z-index: 1000;
+        &[data-state="hidden"] {
+          @include breakpoint($crotchet, true) {
+            right: $base-spacing;
+          }
+          @include breakpoint($semibreve, true) {
+            right: $base-spacing*3;
+          }
+        }
+        .menu {
+          border: none;
+          .leaf,
+          .expanded {
+            @include inline-block-fix;
+            border: none;
+            padding-left: $base-spacing/2;
+            .icon {
+              border-radius: 50%;
+              height: auto;
+              padding: 0;
+              border-width: 2px;
+              border-style: solid;
+              @include inverted (
+                $background: transparent
+              );
+              &:hover {
+                @include inverted (
+                  $background: $white
+                );
+              }
+              &--text,
+              .subtitle {
+                @include element-invisible;
+              }
+              &:before {
+                position: relative;
+              }
+            }
+          }
+        }
+      }
+
+      @include breakpoint($page-width, true) {
+        &,
+        &[data-state="hidden"] {
+          right: 50%;
+          margin-right: em(-480px);
+        }
+      }
+    }
+  }
+
+  .navigation {
+    .event-details {
+      font-size: modular-scale(-1);
+      line-height: 1;
+      padding-bottom: $base-spacing/2;
+      padding-top: $base-spacing/2;
+      padding-left: $base-spacing*3;
+      padding-right: $base-spacing*3;
+      text-align: center;
+      width: 100%;
+      @include breakpoint($hemidemisemiquaver, true) {
+        @include vertical-center;
+        position: absolute;
+      }
+      @include breakpoint($quaver, true) {
+        font-size: modular-scale(0);
+      }
+      @include breakpoint($crotchet, true) {
+        padding: 0 $base-spacing;
+        text-align: right;
+      }
+      @include breakpoint($semibreve, true) {
+        right: $base-spacing*2;
+      }
+      @include breakpoint($page-width, true) {
+        padding: 0;
+        right: 50%;
+        margin-right: em(-480px);
+      }
+
+    }
+
+    // Mobile view
+    &--button {
+      margin: 0;
+      position: absolute;
+      &[data-position="left"] {
+        left: 0;
+      }
+      &[data-position="right"] {
+        right: 0;
+      }
+    }
+
+    &--menu {
+      @include inverted;
+      margin-top: 0;
+      padding-top: $base-spacing/2;
+      padding-right: $base-spacing;
+      padding-bottom: $base-spacing;
+      padding-left: $base-spacing;
+      position: absolute;
+      top: 0;
+      z-index: 1002;
+      @include breakpoint($hemidemisemiquaver, true) {
+        top: ($base-spacing*3) - em(1px);
+      }
+      &[data-state="visible"] {
+        @include transition-duration(0.2s);
+        @include transition-timing-function(ease-out);
+        @include transition-delay(0);
+      }
+      &--RIGHT {
+        @include transition-property(right);
+        right: 0;
+        &[data-state="hidden"] {
+          right: -100%;
+        }
+        .menu {
+          border-bottom: 1px solid $mid-grey;
+          border-left: 1px solid $mid-grey;
+          border-right: 1px solid $mid-grey;
+          .leaf,
+          .expanded {
+            border-top: 1px solid $mid-grey;
+            padding-left: 47px;
+            .icon {
+              @include inverted (
+                $background: $white,
+                $text: $dark-grey
+              );
+              &:hover {
+                @include inverted (
+                  $background: $dark-grey,
+                  $text: $white
+                );
+              }
+              display: block;
+              height: 47px;
+              padding-left: $base-spacing/2;
+              padding-right: $base-spacing/2;
+              &:before {
+                position: absolute;
+                text-align: center;
+                left: 0;
+                top: inherit;
+                vertical-align: 0%;
+              }
+              &--text {
+                @extend %font-emphasis;
+                padding-top: $base-spacing/4;
+                text-transform: uppercase;
+              }
+              .subtitle {
+                font-size: modular-scale(-1);
+                margin-top: -$base-spacing/2;
+                margin-bottom: 0;
+              }
+            }
+          }
+        }
+      }
+
+      &--LEFT {
+        @include transition-property(left);
+        left: 0;
+        &[data-state="hidden"] {
+          left: -100%;
+          @include breakpoint($breve, true) {
+            height: $base-spacing*3;
+            background-color: transparent;
+            left: 0;
+            top: 0;
+            padding: 0;
+            .menu {
+              @include vertical-center;
+              .leaf {
+                @include inline-block-fix;
+                padding-left: $base-spacing/2;
+              }
+            }
+          }
+          @include breakpoint($breve, true) {
+            left: $base-spacing;
+          }
+          @include breakpoint($page-width, true) {
+            left: 50%;
+            margin-left: em(-520px);
+          }
+        }
+      }
+      &--exit {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 1000;
+      }
+    }
+
+  }
+
+}

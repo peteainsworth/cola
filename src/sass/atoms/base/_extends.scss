@@ -1,0 +1,27 @@
+//////////////////////////////
+// Base extends
+// atoms/base/_base.scss
+//////////////////////////////
+
+%base--html {
+  font-size: $em-base;
+  /**
+   * modules/system/system.base.css
+   * For anything you want to hide on page load when JS is enabled, so
+   * that you can use the JS to control visibility and avoid flicker.
+   */
+  &.js {
+    .js-hide {
+      display: none;
+    }
+  }
+}
+
+%base--body {
+  @include font-body;
+  color: $text-default;
+  font-size: modular-scale(0);
+  font-style: normal;
+  line-height: $base-line-height;
+  min-width: $hemidemisemiquaver;
+}

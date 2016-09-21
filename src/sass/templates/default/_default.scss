@@ -1,0 +1,55 @@
+//////////////////////////////
+// Default Template
+
+// @import "mixins";
+// @import "extends";
+//////////////////////////////
+
+@mixin cola-default {
+
+  ._default {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    @include breakpoint($hemidemisemiquaver, true) {
+      margin-top: $base-spacing*3;
+    }
+
+
+    ._header,
+    ._main {
+    }
+    ._main {
+      clear: both;
+      //@include container($page-width);
+      @include padding-page;
+      margin: 0 auto;
+      padding-bottom: $base-spacing;
+      padding-top: $base-spacing;
+    }
+
+    ._header {
+      background-color: transparent;
+      &--content {
+        position: relative;
+      }
+    }
+
+    ._header--message {
+      color: $white;
+    }
+
+    ._footer {
+      @include full;
+    }
+
+  }
+
+}

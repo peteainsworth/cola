@@ -1,0 +1,67 @@
+//////////////////////////////
+// Pager Molecule
+
+// @import "mixins";
+// @import "extends";
+//////////////////////////////
+
+@mixin cola-pager {
+
+  .pager {
+    @include clearfix;
+    @include full;
+    @include no-bullets;
+    padding: 0;
+    text-align: center;
+  }
+
+  .pager li,
+  .pager__item {
+    @include inline-block-fix;
+    margin: 0.1em;
+    padding: 0;
+    &.first {
+      margin-left: 0;
+    }
+    &.last {
+      margin-right: 0;
+    }
+  }
+
+  .pager .pager-current,
+  .pager .pager-next a,
+  .pager .pager-previous a,
+  .pager__item a,
+  .pager__item--current,
+  .pager__item--ellipsis {
+      @extend %button;
+  }
+  .pager li:hover,
+  .pager__item a:hover,
+  .pager .pager-next a,
+  .pager .pager-previous a {
+
+  }
+  .pager .pager-current,
+  .pager__item--current {
+      background-color: transparent;
+      color: $text-default;
+      &:hover {
+          background-color: transparent;
+          color: $text-default;
+          cursor: default;
+      }
+  }
+  .pager__item--ellipsis {
+    border: none;
+  }
+  .pager-load-more {
+    .pager-next {
+      width: 100%;
+      a {
+        @extend %button--FULL;
+      }
+    }
+  }
+
+}

@@ -1,0 +1,21 @@
+//////////////////////////////
+// Article Extends
+// organisms/article/_article.scss
+//////////////////////////////
+
+%#{$article-class}--aside--spacing {
+  margin-bottom: 0;
+}
+
+%#{$article-class}--title {
+}
+
+%#{$article-class}--subtitle {
+  @include font-body;
+  margin-top: -$base-spacing/4;
+  text-transform: uppercase;
+  @include breakpoint($crotchet, true) {
+    font-size: modular-scale(1);
+    margin-top: -$base-spacing/2;
+  }
+}

@@ -1,0 +1,82 @@
+//////////////////////////////
+// Icon Molecule
+
+// @import "mixins";
+// @import "extends";
+//////////////////////////////
+
+@mixin cola-icon {
+
+  .icon {
+    &:before,
+    &:after {
+      position: relative;
+      font-weight: normal;
+    }
+
+    &-close {
+      &:before {
+        font-size: modular-scale(-1);
+        top: 0;
+      }
+      .icon--text {
+        display: none;
+      }
+    }
+
+    @at-root {
+      & a,
+      a#{&} {
+        display: block;
+        text-transform: uppercase;
+        @extend %font-title;
+        &:focus,
+        &:active {
+          text-decoration: none;
+        }
+      }
+    }
+
+    &--INLINE {
+      &:before,
+      &:after {
+        top: em(-3px);
+      }
+    }
+
+    &--BLOCK {
+      &:before {
+        font-size: modular-scale(1);
+        min-height: 20px;
+        @include breakpoint($minim, true) {
+          font-size: modular-scale(4);
+        }
+      }
+      .icon--text {
+        font-size: modular-scale(-2);
+        display: block;
+        margin-top: $base-spacing/2;
+        @include breakpoint($minim, true) {
+          font-size: modular-scale(-1);
+        }
+      }
+      @at-root #info--nav & {
+        padding-left: em(6px);
+        padding-right: em(6px);
+        width: em(74px);
+        height: em(94px);
+        margin: 0;
+        @include breakpoint($minim, true) {
+          width: em(88px);
+          height: em(120px);
+        }
+      }
+    }
+
+    &.button {
+      border-radius: 50%;
+      padding: 0;
+    }
+  }
+
+}

@@ -1,0 +1,232 @@
+//////////////////////////////
+// Header Organism
+
+// @import "mixins";
+// @import "extends";
+//////////////////////////////
+
+@mixin cola-header {
+
+  ._header {
+    position: relative;
+    margin-top: em(50px);
+    margin-bottom: em(40px);
+    text-align: left;
+    overflow: hidden;
+    @include breakpoint($breve, true) {
+      height: em(111px);
+      margin-bottom: em(80px);
+    }
+    &--background {
+      background-size: auto 100%;
+      background-position: center center;
+      background-repeat: no-repeat;
+      margin-left: -50%;
+      min-width: 200%;
+      &-image {
+        display: block;
+        height: 350px !important;
+        max-width: 99999%;
+      }
+      @include breakpoint($demisemiquaver, true) {
+        height: 350px;
+        margin-left: 0;
+        min-width: 100%;
+        &-image {
+          @include element-hidden;
+        }
+      }
+      @include breakpoint($quaver, true) {
+        height: 500px;
+      }
+      @include breakpoint($breve, true) {
+        height: auto !important;
+        &-image {
+          display: block;
+          height: auto !important;
+          max-width: 100%;
+          width: 100%;
+        }
+      }
+    }
+    &--date {
+      @extend %font-title;
+      text-align: center;
+      padding: em(10px);
+      background-color: $white;
+      margin-top: $base-spacing;
+      z-index: -1;
+      span {
+        color: $purple;
+      }
+      .event-details {
+        &--startdate {
+          @extend %font-body;
+          font-size: em(35px);
+          .br-point {
+            display: none;
+          }
+        }
+        &--enddate {
+          @extend %font-title;
+          font-size: em(19px);
+          letter-spacing: em(2px);
+          margin-left: em(-3px);
+        }
+        &--location {
+          margin-top: em(5px);
+          .address {
+            @extend %font-title;
+            font-size: em(17px);
+            letter-spacing: em(2px);
+          }
+        }
+      }
+      @include breakpoint($demisemiquaver, true) {
+        width: em(320px);
+      }
+      @include breakpoint($crotchet, true) {
+        position: absolute;
+        top: 0;
+        left: em(320px);
+        width: auto;
+        margin-top: 0;
+        padding: em(15px) 0 0 0;
+        background-color: transparent;
+        text-align: right;
+        .event-details {
+          &--startdate, &--enddate, &--location {
+            display: block;
+            margin: 0;
+            white-space: normal;
+          }
+          &--startdate {
+            font-size: em(56px);
+          }
+          &--enddate {
+            margin-bottom: em(4px);
+          }
+          &--location {
+            .address {
+              font-size: em(19px);
+            }
+          }
+        }
+      }
+    }
+    &--cta {
+      text-align: center;
+      margin-top: em(20px);
+      z-index: 10;
+      @include breakpoint($demisemiquaver, true) {
+        text-align: left;
+      }
+      @include breakpoint($crotchet, true) {
+        text-align: left;
+        position: relative;
+        left: em(225px);
+        margin-top: em(62px);
+      }
+      @include breakpoint($breve, true) {
+        text-align: right;
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin-top: $base-spacing;
+      }
+      .btn-ticket {
+        margin-right: 0;
+        @include breakpoint($demisemiquaver, true) {
+          margin-right: em(10px);
+        }
+        @include breakpoint($crotchet, true) {
+          margin-right: em(20px);
+        }
+        @include breakpoint($breve, true) {
+          margin-right: 0;
+        }
+      }
+      .btn-icon {
+        padding: 1px;
+        font-size: em(13px);
+        margin-right: em(10px);
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+    &--social {
+      margin-top: $base-spacing/2;
+      @include breakpoint($demisemiquaver, true) {
+        display: block;
+      }
+      @include breakpoint($crotchet, true) {
+        display: inline;
+      }
+      @include breakpoint($breve, true) {
+        display: block;
+      }
+    }
+    &--branding {
+      margin-top: $base-spacing;
+      @include breakpoint($crotchet, true) {
+        margin-left: $base-spacing;
+        width: 200px
+      }
+      @include breakpoint($page-width, true) {
+        left: 50%;
+        margin-left: em(-510px);
+      }
+    }
+    &--message {
+      @include inverted;
+      @include clearfix-me;
+      padding-top: $base-spacing/2;
+      text-align: center;
+      .site-slogan,
+      .site-intro {
+        @include inline-block-fix;
+        @include padding-content;
+        @extend %base--header;
+        margin-bottom: 0;
+      }
+      .site-intro {
+        padding: 0;
+        h2 {
+          margin-bottom: 0;
+        }
+        p {
+          margin-bottom: 0;
+        }
+      }
+      @include breakpoint($crotchet, true) {
+        background-color: transparent;
+        color: $dark-grey;
+        padding: 0;
+        position: absolute;
+        top: em(126px);
+        text-align: left;
+        left: em(250px);
+        z-index: 1;
+        .site-slogan,
+        .site-intro {
+          display: block;
+          padding: 0;
+        }
+        .site-slogan {
+          font-size: modular-scale(3);
+        }
+        .site-intro {
+          @include font-emphasis;
+          font-size: modular-scale(1);
+          text-transform: none;
+        }
+      }
+      @include breakpoint($page-width, true) {
+        left: 50%;
+        margin-left: em(-282px);
+      }
+    }
+  }
+
+}

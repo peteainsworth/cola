@@ -1,0 +1,31 @@
+//////////////////////////////
+// Button mixins
+// atoms/button/_button.scss
+//////////////////////////////
+
+@mixin button-colors($button-background, $button-background-hover, $button-text, $button-text-hover, $button-border: $button-background, $button-border-hover: $button-background) {
+  background-color: $button-background;
+  border-color: $button-border;
+  &,
+  &:link,
+  &:visited {
+    color: $button-text;
+    &:hover,
+    &:focus,
+    &.active {
+      background-color: $button-background-hover;
+      border-color: $button-border-hover;
+      color: $button-text-hover;
+    }
+    @at-root a:hover & {
+      background-color: $button-background-hover;
+      border-color: $button-border-hover;
+      color: $button-text-hover;
+    }
+    &:active {
+      background-color: $button-background-hover;
+      border-color: $button-border-hover;
+      color: $button-text-hover;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+//////////////////////////////
+// Progress Molecule
+
+// @import "mixins";
+// @import "extends";
+//////////////////////////////
+
+@mixin cola-progress {
+
+  .progress {
+    .bar {
+      @extend %progress--bar;
+    }
+    .filled {
+      @extend %progress--filled;
+    }
+    .percentage {
+      @extend %progress--percentage;
+    }
+  }
+
+  .ajax-progress {
+    @extend %ajax-progress;
+    .throbber {
+      @extend %progress--throbber;
+      @extend %ajax-progress--throbber;
+    }
+    .message {
+      @extend %ajax-progress--message;
+    }
+  }
+
+  tr .ajax-progress .throbber {
+    margin: 0 2px;
+  }
+  .ajax-progress-bar {
+    width: 16em;
+  }
+
+}

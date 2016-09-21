@@ -1,0 +1,4 @@
+@mixin article-background($bg-color:$bg-general, $fg-color:$fg-white) {
+    background-color: $bg-color;
+    color: $fg-color;
+}

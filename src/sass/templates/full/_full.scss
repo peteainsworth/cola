@@ -1,0 +1,37 @@
+//////////////////////////////
+// Full Template
+
+// @import "mixins";
+// @import "extends";
+//////////////////////////////
+
+@mixin cola-full {
+
+  ._full {
+
+    overflow: hidden;
+    position: relative;
+    padding-left: $base-spacing;
+    padding-right: $base-spacing;
+
+    @include breakpoint($demisemisemiquaver, true) {
+      padding-left: $base-spacing*2.5;
+      padding-right: $base-spacing*2.5;
+    }
+
+    @include breakpoint($crotchet, true) {
+      padding-left: $base-spacing*1.5;
+      padding-right: $base-spacing*1.5;
+    }
+
+    ._main {
+      margin-top: $base-spacing;
+      &--container {
+        @include container(em($page-width));
+        margin: 0 auto;
+      }
+    }
+
+  }
+
+}

@@ -1,0 +1,47 @@
+//////////////////////////////
+// Grids Mixins
+// templates/grids/_grids.scss
+//////////////////////////////
+
+@mixin grid-padding($multiplier: 1) {
+  @if unitless($multiplier) {
+    padding-left: $base-spacing*$multiplier;
+    padding-right: $base-spacing*$multiplier;
+  } @else {
+    @error "This should be a untiless number to act as a multiplier.";
+  }
+}
+
+@mixin grid-item-span(
+    $grid-columns,
+    $gutter-width: $base-spacing,
+    $fallback: false
+  ) {
+
+  @if unitless($grid-columns) {
+
+    @if type-of($gutter-width) == bool {
+      $fallback: $gutter-width;
+      $gutter-width: $base-spacing*2;
+    }
+
+    @if $grid-columns == 1 {
+      margin-bottom: $base-spacing;
+      @include span(12 no-gutter);
+    } @else {
+      @include gallery(susy-get(columns, $susy-grids) / $grid-columns);
+      @include gutter($gutter-width);
+      margin-bottom: $gutter-width;
+    }
+
+    @if $fallback == true {
+      &._grid--break {
+        @include break;
+      }
+    }
+
+  } @else {
+    @error "The first argument must be a unitless number representing the number of columns.";
+  }
+
+}

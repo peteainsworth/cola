@@ -1,0 +1,17 @@
+//////////////////////////////
+// cola atoms
+@import "typography/typography";
+@import "base/base";
+@import "media/media";
+@import "button/button";
+@import "form/form";
+@import "table/table";
+//////////////////////////////
+
+@mixin cola-atoms {
+  @include cola-typography;
+  @include cola-base;
+  @include cola-media;
+  @include cola-form;
+  @include cola-table;
+}

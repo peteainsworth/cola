@@ -1,0 +1,168 @@
+//////////////////////////////
+// Form Extends
+// atoms/form/_form.scss
+//////////////////////////////
+
+%form {
+  margin-bottom: modular-scale(0);
+}
+
+%field {
+  color: $input-text-default;
+  font-size: modular-scale(0);
+  &:focus {
+    box-shadow: none;
+    outline: $border-width solid lighten($registration, 15%);
+  }
+}
+
+%label {
+  @extend %font-title;
+  @include transition(color .2s);
+  color: $label-text-default;
+  font-size: modular-scale(0);
+  text-transform: uppercase;
+}
+
+%input--autocomplete {
+  border: $border-width solid;
+  overflow: hidden;
+  position: absolute;
+  z-index: 100;
+  ul {
+    background-color: $button-background-hover-default;
+    list-style: none;
+    list-style-image: none;
+    margin: 0;
+    padding: $base-spacing/2 0 $base-spacing/2;
+  }
+  li {
+    color: $button-text-default;
+    padding-left: $base-spacing;
+    padding-bottom: $base-spacing/2;
+    cursor: pointer;
+    white-space: pre;
+    zoom: 1; /* IE7 */
+    &:hover,
+    &:focus,
+    &.selected {
+      color: $link-hover-inverted;
+    }
+  }
+}
+%input--autocomplete--THROBBER {
+  &.throbbing {
+    @extend %progress--throbber;
+    background-position: 100% 14px; /* LTR */
+  }
+  &.form-autocomplete {
+    background-position: 100% -26px; /* LTR */
+  }
+}
+
+%fieldset {
+  margin-left: 0;
+  margin-right: 0;
+  padding: ($base-spacing/2) $base-spacing $base-spacing $base-spacing;
+  border: none;
+  background-color: $fieldset-container-background-default;
+  fieldset {
+    background-color: $fieldset-background-default;
+  }
+}
+
+%legend {
+  font-size: modular-scale(0);
+  padding: 9px $base-spacing;
+  background-color: $legend-background-default;
+  color: $legend-text-default;
+  @extend %font-title;
+  text-transform: uppercase;
+}
+
+%fieldset--COLLAPSIBLE {
+  &.collapsible {
+    position: relative;
+    padding: 0;
+    border: none;
+
+    legend {
+      width: 100%;
+      padding: 0;
+    }
+    .fieldset-legend {
+      padding: 0;
+      background: none;
+      display: block;
+
+      .summary {
+        float: right;
+      }
+    }
+    .fieldset-title {
+      @extend %button;
+      @extend %button--FULL;
+      padding-left: $base-spacing/2;
+      text-align: left;
+    }
+    .fieldset-wrapper {
+      border: $border-width solid $fieldset-container-border-default;
+      padding: $base-spacing $base-spacing;
+    }
+  }
+}
+
+%fieldset--COLLAPSED {
+  &.collapsed {
+    height: 3.7em; // padding-top + padding-bottom + line-height
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    height: 1.4em;
+   .fieldset-wrapper {
+      display: none;
+    }
+  }
+}
+
+// No Text Select
+%no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+%dropdown {
+  @include no-bullets;
+  box-shadow: none;
+  padding-left: 0;
+  display:none;
+  position: absolute;
+  background-color: $form-background-default;
+  margin: 0px;
+  min-width: 100px;
+  z-index: 1000;
+  max-height: 70%;
+  opacity: 0;
+  overflow-y: hidden;
+
+  will-change: width, height;
+
+  li {
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(0,0,0, .06);
+    }
+
+    & > a, & > span {
+      display: block;
+      padding: $base-spacing;
+    }
+  }
+  @at-root .lt-ie9 & {
+    border: $border-width solid $input-border-default;
+  }
+}

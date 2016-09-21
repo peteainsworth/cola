@@ -1,0 +1,46 @@
+//////////////////////////////
+// Event Details Molecule
+
+// @import "mixins";
+// @import "extends";
+//////////////////////////////
+
+@mixin cola-event-details {
+
+  .event-details {
+    font-size: modular-scale(-2);
+    line-height: 1.5;
+    text-align: center;
+    text-transform: uppercase;
+
+    &--name {
+      @extend %element-invisible;
+    }
+
+    &--date,
+    &--location {
+      @include breakpoint($crotchet, true) {
+        position: absolute;
+      }
+    }
+
+    &--date {
+      @include breakpoint($crotchet, true) {
+        left: 50%;
+        margin-left: em(160px);
+      }
+    }
+
+    &--location {
+      @include breakpoint($crotchet, true) {
+        right: 50%;
+        margin-right: em(160px);
+      }
+    }
+
+    @include breakpoint($crotchet, true) {
+      padding-top: $base-spacing;
+    }
+  }
+
+}

@@ -1,0 +1,47 @@
+//////////////////////////////
+// Article Artist Page
+
+// @import "mixins";
+// @import "extends";
+//////////////////////////////
+
+@mixin cola-article-artist {
+
+  .artist {
+    &--details {
+      position: relative;
+      z-index: 1;
+    }
+    &--performance {
+      margin-bottom: $base-spacing;
+      .box {
+        @extend %font-emphasis;
+        font-size: modular-scale(2);
+        margin-bottom: 0;
+        padding-bottom: $base-spacing;
+      }
+      .button {
+        @include button-colors($button-background-inverted-default, $button-background-hover-inverted-default, $button-text-inverted-default, $button-text-hover-inverted-default, $button-border-inverted-default, $button-border-hover-default);
+        &--DISABLED {
+          border-color: $button-text-hover-inverted-default;
+          &:hover {
+            background-color: $button-text-hover-inverted-default;
+            color: $button-text-inverted-default;
+          }
+        }
+      }
+    }
+    &--links {
+      bottom: -$base-spacing;
+      padding-bottom: 0;
+      position: absolute;
+      text-align: center;
+      width: 100%;
+    }
+    &--title {
+      @extend %font-emphasis;
+      text-transform: none;
+    }
+  }
+
+}

@@ -1,0 +1,82 @@
+//////////////////////////////
+// Nav Extends
+// molecules/nav/_nav.scss
+//////////////////////////////
+
+%nav {
+  @extend %font-title;
+  text-transform: uppercase;
+  .menu {
+    .leaf,
+    .expanded {
+      &.active-trail {
+        a,
+        a:link,
+        a:visited {
+          color: $button-text-hover-default;
+        }
+      }
+    }
+  }
+}
+
+%nav--title {
+  @extend %base--h5;
+  margin-bottom: 0;
+}
+
+%nav--BG {
+  @include inverted();
+}
+
+%nav--INLINE {
+  padding-top: modular-scale(-0.6);
+  padding-bottom: modular-scale(-0.6);
+  .menu {
+    .leaf,
+    .expanded {
+      @include inline-block-fix;
+    }
+  }
+}
+
+%nav--IMAGE {
+  .menu {
+    .leaf,
+    .expanded {
+      margin-bottom: modular-scale(-0.8);
+      vertical-align: middle;
+      a {
+        display: block;
+        position: relative;
+      }
+    }
+  }
+}
+
+%nav--BUTTONS {
+  background: transparent;
+  .menu {
+    .leaf,
+    .expanded {
+      margin-bottom: $base-spacing;
+      height: auto;
+      a {
+        @extend %button;
+        border-radius: 4px;
+        padding: 0;
+      }
+    }
+  }
+}
+
+%nav--CENTER {
+  text-align: center;
+  .menu {
+    text-align: center;
+    li {
+      margin-left: $base-spacing/4;
+      margin-right: $base-spacing/4;
+    }
+  }
+}

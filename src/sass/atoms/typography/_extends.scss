@@ -1,0 +1,217 @@
+//////////////////////////////
+// Typography Extends
+// atoms/typography/_typography.scss
+//////////////////////////////
+
+%font-emphasis {
+  @include font-emphasis;
+}
+%font-title {
+  @include font-title;
+}
+%font-body {
+  @include font-body;
+}
+
+%base--header {
+  @extend %font-body;
+  font-style: normal;
+  letter-spacing: 0;
+  line-height: $heading-line-height;
+  margin: 0 0 $base-spacing/2;
+  text-transform: uppercase;
+}
+
+%base--header--SECTION {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+%base--h1 {
+  font-size: modular-scale(2);
+  margin-bottom: modular-scale(-7);
+  @include breakpoint($crotchet, true) {
+    font-size: modular-scale(4);
+    margin-bottom: modular-scale(-8);
+  }
+}
+
+%base--h2 {
+  font-size: modular-scale(1);
+  margin-bottom: modular-scale(-6);
+  @include breakpoint($crotchet, true) {
+    font-size: modular-scale(3);
+    margin-bottom: modular-scale(-7);
+  }
+}
+
+%base--h3 {
+  font-size: modular-scale(0);
+  margin-bottom: modular-scale(-5);
+  @include breakpoint($crotchet, true) {
+    font-size: modular-scale(2);
+    margin-bottom: modular-scale(-6);
+  }
+}
+
+%base--h4 {
+  font-size: modular-scale(-1);
+  margin-bottom: modular-scale(-4);
+  @include breakpoint($crotchet, true) {
+    font-size: modular-scale(1);
+    margin-bottom: modular-scale(-5);
+  }
+}
+
+%base--h5 {
+  font-size: modular-scale(-2);
+  line-height: $base-line-height;
+  margin-bottom: modular-scale(-3);
+  @include breakpoint($crotchet, true) {
+    font-size: modular-scale(0);
+    margin-bottom: modular-scale(-4);
+  }
+}
+
+%base--h6 {
+  @extend %base--h5;
+  @extend %font-body;
+}
+
+%base--a {
+  outline: 0;
+  text-decoration: none;
+  &:link,
+  &:visited {
+    &:hover {
+      cursor: pointer;
+      text-decoration: none;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+  &:button {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+  }
+  @include transition-property(color);
+  @include transition-duration(150ms);
+  @include transition-timing-function(linear);
+  @include transition-delay(0);
+
+  @include link-colors($link-default, $link-hover-default);
+}
+
+%base--list {
+  padding-left: 27px;
+  margin: 0 0 $base-spacing;
+}
+
+%base--ol {
+  list-style: decimal;
+}
+
+%base--ul {
+  list-style: disc;
+}
+
+%base--ul--INLINE {
+  padding-left: 0;
+  li {
+    display: inline;
+    padding: 0 0.5em;
+  }
+}
+
+%base--ul--MENU {
+  border: none;
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+%base--li {
+  display: list-item;
+}
+
+%menu--li--LEAF {
+  display: block;
+  list-style-image: none;
+  list-style-type: none;
+  margin-left: 0;
+}
+
+%base--first-nested-list {
+  list-style-type: circle;
+}
+
+%base--second-nested-list {
+  list-style-type: square;
+}
+
+%base--em {
+  font-style: italic;
+}
+
+%base--strong {
+  @extend %font-title;
+}
+
+%base--p {
+  margin: 0 0 modular-scale(0.5);
+}
+
+%base--blockquote {
+  //@include rhythm(0, 1, 1, 1);
+  padding: 0 1.5em;
+
+  //@include rhythm-borders(1px);
+  //@include apply-side-rhythm-border(left, 10px);
+  font-style: italic;
+
+  > :first-child {
+    margin-top: 0;
+  }
+}
+
+%base--small {
+  font-size: .75em;
+}
+
+%base--code {
+  font-family: $mono;
+}
+
+%base--inline-code {
+  background: rgba($link-deep, .2);
+}
+
+%base--deeplink {
+  display: block;
+  border: none;
+  color: $link-deep;
+
+  @include breakpoint($quaver, true) {
+    h1 & {
+      //@include translateX(-1rem);
+      padding-left: 18px;
+      //@include box-sizing(content-box);
+    }
+  }
+}
+
+%font-light {
+  @extend %font-body;
+}
+
+%lowercase {
+  text-transform: lowercase;
+}
+
+%shadow {
+  text-shadow: 1px 1px 1px rgba($registration, 0.8);
+}

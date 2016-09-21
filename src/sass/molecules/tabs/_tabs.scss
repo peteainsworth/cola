@@ -1,0 +1,61 @@
+//////////////////////////////
+// Tabs Molecule
+
+// @import "mixins";
+// @import "extends";
+//////////////////////////////
+
+@mixin cola-tabs {
+
+  #tabs {
+    @include padding-page;
+    margin-top: modular-scale(0);
+  }
+
+  .tabs {
+    @include clearfix;
+    @include container($page-width);
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      float: left;
+      /* LTR */
+      margin-right: 1em;
+      /* LTR */
+      & > a {
+        display: block;
+      }
+    }
+    a {
+      background-color: #eee;
+      text-decoration: none;
+
+      &.active {
+        background-color: #ccc;
+      }
+      &:hover,
+      &:focus {
+        background-color: #bbb;
+      }
+    }
+
+    /* Primary Tabs */
+    &.primary {
+      margin-bottom: 1em;
+      border-bottom: 1px solid #bbb;
+
+      a {
+        padding: 0.3em 0.8em;
+      }
+    }
+
+    /* Secondary Tabs */
+    &.secondary a {
+      padding: 0.2em 0.5em;
+      margin: 0.4em 0;
+      font-size: 0.9em;
+    }
+  }
+
+}

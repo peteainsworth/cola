@@ -1,0 +1,27 @@
+//////////////////////////////
+// Breadcrumb Molecule
+
+// @import "mixins";
+// @import "extends";
+//////////////////////////////
+
+@mixin cola-breadcrumb {
+
+  .breadcrumb {
+
+    @extend .nav--TOC;
+    padding-top: modular-scale(-8);
+    padding-bottom: modular-scale(-8);
+    margin-bottom: 0;
+
+    .inline {
+      @include inline-block-fix;
+    }
+
+    .last {
+      color: $link-hover-inverted;
+    }
+
+  }
+
+}

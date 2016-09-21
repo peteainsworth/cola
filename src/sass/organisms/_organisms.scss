@@ -1,0 +1,16 @@
+//////////////////////////////
+// Cola organisms
+@import "off-canvas/off-canvas";
+@import "article/article";
+@import "footer/footer";
+@import "header/header";
+@import "navigation/navigation";
+//////////////////////////////
+
+@mixin cola-organisms {
+  @include cola-off-canvas;
+  @include cola-article;
+  @include cola-footer;
+  @include cola-header;
+  @include cola-navigation;
+}

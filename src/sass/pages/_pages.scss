@@ -1,0 +1,10 @@
+//////////////////////////////
+// Cola pages
+@import "article-artist/article-artist";
+@import "front/front";
+//////////////////////////////
+
+@mixin cola-pages {
+  @include cola-article-artist;
+  @include cola-front;
+}

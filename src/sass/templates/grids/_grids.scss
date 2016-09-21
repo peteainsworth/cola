@@ -1,0 +1,111 @@
+//////////////////////////////
+// Grids Template
+@import "mixins";
+//@import "grids/extends";
+//////////////////////////////
+
+@mixin cola-grids {
+
+  .#{$grids-class} {
+    //@include full;
+    @include layout($susy-grids);
+    @include container($susy-grids-padding-half);
+    margin-bottom: modular-scale(0);
+    list-style: none;
+    padding-left: 0;
+
+    &--header {
+      @extend .article--header;
+      @extend %box;
+    }
+    &--container {
+      @include margin-page;
+      &--ASIDE {
+        @include breakpoint($breve, true) {
+          @include fixed-fluid-layout(300px, $base-spacing, _grid--body, _grid--aside, last);
+        }
+      }
+    }
+
+    &--aside {
+
+    }
+
+    &--item {
+      @include grid-item-span(1);
+      margin-bottom: modular-scale(0);
+      @include breakpoint($crotchet, true) {
+        @include grid-item-span(2);
+      }
+    }
+
+    &--2 {
+      @include breakpoint($crotchet, true) {
+        .#{$grids-class}--item {
+          @include grid-item-span(2);
+        }
+      }
+    }
+
+    &--3 {
+      @include breakpoint($quaver, true) {
+        .#{$grids-class}--item {
+          @include grid-item-span(2);
+        }
+        .#{$grids-class}--item:last-of-type {
+          @include push(6 of 12);
+        }
+      }
+      @include breakpoint($semibreve, true) {
+        .#{$grids-class}--item {
+          @include grid-item-span(3, true);
+        }
+        .#{$grids-class}--item:last-of-type {
+          @include grid-item-span(3, true);
+        }
+      }
+    }
+
+    &--4 {
+      @include breakpoint($semiquaver, true) {
+        margin-left: -$base-spacing/2;
+        margin-right: -$base-spacing/2;
+        .#{$grids-class}--item {
+          @include grid-item-span(2, $base-spacing);
+        }
+      }
+      @include breakpoint($quaver, true) {
+        .#{$grids-class}--item {
+          @include grid-item-span(3, $base-spacing);
+        }
+        .#{$grids-class}--remainder {
+          @include element-invisible;
+        }
+      }
+      @include breakpoint($crotchet, true) {
+        margin-left: 0;
+        margin-right: 0;
+        .#{$grids-class}--item {
+          @include grid-item-span(3);
+        }
+      }
+      @include breakpoint($breve, true) {
+        .#{$grids-class}--item {
+          @include grid-item-span(4, true);
+        }
+        .#{$grids-class}--remainder {
+          @include element-visible;
+        }
+      }
+    }
+
+  }
+
+  .#{$grids-class}--IB {
+    @extend .#{$grids-class};
+    &--item {
+      @include inline-block-fix;
+    }
+  }
+
+}

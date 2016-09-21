@@ -1,0 +1,146 @@
+//////////////////////////////
+// Button extends
+// atoms/button/_button.scss
+//////////////////////////////
+
+%button--reset {
+  background: none;
+  border: 0;
+  &:focus {
+    outline: none;
+    background-color: lighten($button-background-default, 10%);
+  }
+}
+
+%button {
+  @extend %button--reset;
+  box-sizing: border-box;
+  border-radius: 3px;
+  display: inline-block;
+  margin: 0 30px 0 0;
+  padding: 9px 20px;
+  border: 0;
+
+  //font-size: modular-scale(0);
+  font-size: 19px;
+  @extend %font-title;
+  line-height: 1.2;
+  letter-spacing: em(1px);
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  vertical-align: middle;
+
+  overflow: visible;
+  white-space: normal;
+  cursor: pointer;
+
+  @include transition-property(background, color);
+  @include transition-duration(150ms);
+  @include transition-timing-function(linear);
+  @include transition-delay(0);
+
+  &,
+  &:hover,
+  &:active,
+  &:focus,
+  &:visited {
+    text-decoration: none;
+  }
+
+  &:active,
+  &:focus {
+    outline: none;
+  }
+
+  &.active {
+    cursor: default;
+  }
+
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+
+  @include button-colors($button-background-default, $button-background-hover-default, $button-text-default, $button-text-hover-default, $button-border-default, $button-border-hover-default);
+}
+
+%button--FULL {
+  display: block;
+  padding-right: 0;
+  padding-left: 0;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+}
+
+%button--HALF {
+  @extend %button--FULL;
+  width: 50%;
+}
+
+%button--LEFT {
+  @include span(1 of 2 (0));
+  border-right: 3px $white solid;
+}
+%button--RIGHT {
+  @include span(1 of 2 (0) last);
+}
+
+%button--FIRST {
+  @include span(1 of 3 (0));
+  border-right: 3px $white solid;
+  @extend %button--FULL;
+  clear: none;
+}
+%button--SECOND {
+  @include span(1 of 3 (0));
+  border-right: 3px $white solid;
+  @extend %button--FULL;
+  clear: none;
+}
+%button--THIRD {
+  @include span(1 of 3 (0) last);
+  @extend %button--FULL;
+}
+
+%button--NATURAL {
+  vertical-align: baseline;
+  font-size: inherit;
+  line-height: inherit;
+  height: auto;
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+}
+
+%button--TALL {
+  font-size: modular-scale(0);
+}
+
+%button--INSET {
+  margin: 0;
+}
+
+%button--DISABLED {
+  &,
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: #ddd;
+    color: #777;
+    cursor: default;
+    box-shadow: none;
+  }
+}
+
+%button--MORE-LINK {
+  a {
+    margin-top: modular-scale(0);
+    margin-bottom: modular-scale(0);
+    margin-left: 0;
+    margin-right: 0;
+    clear: both;
+    display: block;
+    text-align: center;
+  }
+}

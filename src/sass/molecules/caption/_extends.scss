@@ -1,0 +1,35 @@
+//////////////////////////////
+// Caption Extends
+// molecules/caption/_caption.scss
+//////////////////////////////
+
+%caption {
+  @include inverted;
+  padding: em(12px) em(20px) em(10px);
+  margin-bottom: 0;
+  @include breakpoint($quaver, true) {
+    padding: em(100px);
+    margin-bottom: $base-spacing;
+  }
+  @include breakpoint($semibreve, true) {
+    padding-left: em(150px);
+  }
+}
+
+%caption--headline {
+  @extend %base--header;
+  @include inline-block-fix;
+  font-size: modular-scale(2);
+  margin: 0;
+}
+
+%caption--subtext {
+  margin-bottom: 0;
+  p {
+    margin: 0;
+  }
+  @include breakpoint($quaver, true) {
+    @include inline-block-fix;
+    margin-bottom: modular-scale(4);
+  }
+}

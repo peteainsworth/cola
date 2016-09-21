@@ -1,0 +1,31 @@
+//////////////////////////////
+// Partners Molecule
+
+// @import "mixins";
+// @import "extends";
+//////////////////////////////
+
+@mixin cola-partners {
+
+  .partners {
+    padding: $base-spacing/2;
+    margin-bottom: $base-spacing*2;
+    .menu {
+      li {
+        display: inline-block;
+        margin: $base-spacing/2;
+        vertical-align: middle;
+        width: 75px;
+        @include breakpoint($crotchet, true) {
+          margin-left: $base-spacing/2;
+          margin-right: $base-spacing/2;
+          width: auto;
+        }
+      }
+    }
+    @include breakpoint($crotchet, true) {
+      padding: $base-spacing;
+    }
+  }
+
+}

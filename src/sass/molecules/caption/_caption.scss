@@ -1,0 +1,38 @@
+//////////////////////////////
+// Captions Molecule
+
+// @import "mixins";
+@import "extends";
+//////////////////////////////
+
+@mixin cola-caption {
+
+  // Caption classes
+  .field-name-field-fr-caption {
+    .field-item:last-child .field-name-field-fr-caption-subtext .field-items {
+      @include breakpoint($quaver, true) {
+        margin-bottom: 0;
+        width: 100%;
+      }
+      @include breakpoint($semibreve, true) {
+        margin-bottom: modular-scale(4);
+        width: auto;
+      }
+    }
+  }
+
+  .field-name-field-fr-caption-headline {
+    .field-items {
+      @extend %caption;
+      @extend %caption--headline;
+    }
+  }
+
+  .field-name-field-fr-caption-subtext {
+    .field-items {
+      @extend %caption;
+      @extend %caption--subtext;
+    }
+  }
+
+}

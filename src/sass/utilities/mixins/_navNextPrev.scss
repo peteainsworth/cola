@@ -1,0 +1,37 @@
+@mixin navNextPrev($navNextClass:next,$navPrevClass:prev) {
+  .#{$navNextClass},
+  .#{$navPrevClass} {
+    display: none;
+    @include breakpoint($crotchet, true) {
+      display: block;
+    }
+    @include hide-text;
+    padding: 60px 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+
+    margin-top: -70px;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    text-decoration: none;
+    z-index: 10;
+  }
+  .#{$navNextClass} {
+    right: 3px;
+    margin-right: 0;
+    background-image: url('../images/arrow_right.png');
+    &:hover {
+      background-image: url('../images/arrow_right_hover.png');
+    }
+  }
+  .#{$navPrevClass} {
+    left: 3px;
+    margin-left: 0;
+    background-image: url('../images/arrow_left.png');
+    &:hover {
+      background-image: url('../images/arrow_left_hover.png');
+    }
+  }
+}

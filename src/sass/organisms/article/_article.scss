@@ -1,0 +1,184 @@
+//////////////////////////////
+// Article Organism
+//@import "mixins";
+@import "extends";
+//////////////////////////////
+
+@mixin cola-article {
+
+  .section--title {
+    @extend h1;
+  }
+
+  .#{$article-class} {
+    @include container($page-width);
+    width: 100%;
+
+    &--header {
+      @extend %box;
+      position: relative;
+      margin-bottom: $base-spacing;
+      margin-right: $base-spacing;
+      padding-bottom: $base-spacing/4;
+      padding-top: $base-spacing/2;
+      padding-right: $base-spacing*3;
+      @include breakpoint($crotchet, true) {
+        padding-bottom: $base-spacing/2;
+        padding-top: $base-spacing;
+      }
+      &--FULL {
+        margin-right: 0;
+      }
+      h1, h2 {
+        line-height: 1;
+        margin-bottom: 0;
+      }
+    }
+
+    &--body {
+      img,
+      .embedded-video,
+      .button,
+      .page-links--social,
+      .jp-audio {
+        @extend %#{$article-class}--aside--spacing;
+      }
+    }
+
+    @include breakpoint($crotchet, true) {
+      &--aside {
+        .menu {
+          .leaf,
+          .expanded {
+            display: block;
+          }
+        }
+      }
+    }
+
+    &--date {
+      @extend %font-emphasis;
+      margin-bottom: $base-spacing/2;
+    }
+
+    &--title {
+      @extend %#{$article-class}--title;
+      &--PAGE {
+        @extend %#{$article-class}--title;
+        @extend %base--header--SECTION;
+      }
+    }
+
+    &--subtitle {
+      @extend %#{$article-class}--subtitle;
+    }
+
+    .standfirst {
+      @extend %base--strong;
+      margin-bottom: $base-spacing;
+    }
+
+    &--body {
+      &--COLUMNS {
+        @include breakpoint($quaver, true) {
+          @include column-count(2);
+          @include column-gap($base-spacing*2);
+        }
+      }
+    }
+
+    &--image {
+      img {
+        @extend %base--image--BORDER;
+        @extend %base--image-RESPONSIVE;
+        border-bottom: none;
+      }
+    }
+
+    &--performance-details,
+    &--artist-links {
+      margin-bottom: $base-spacing;
+    }
+    .time-default {
+      display: inline;
+    }
+
+    &--footer {
+      @include padding-page;
+      &--header {
+        @extend %base--h5;
+        margin-bottom: $base-spacing/2;
+        text-align: left;
+      }
+    }
+
+    &--aside {
+      .field-name-field-fr-artist-spotify-tracks {
+        margin-bottom: $base-spacing/2;
+      }
+      .embedded-video {
+        margin-bottom: $base-spacing;
+      }
+    }
+
+  }
+
+  // {article}@
+  //////////////////////////////
+
+
+  //////////////////////////////
+  // @{article--SPLIT}
+  // Styling for media Components
+
+  .#{$article-class}--SPLIT {
+
+    .#{$article-class}--body,
+    .#{$article-class}--aside {
+      @include breakpoint($crotchet, true) {
+        @include span(3 of 6);
+      }
+    }
+
+  }
+
+  // {article--SPLIT}@
+  //////////////////////////////
+
+
+  //////////////////////////////
+  // @{article--ASIDE}
+  // Styling for media Components
+
+  .#{$article-class}--ASIDE {
+
+    @include clearfix;
+
+    @include breakpoint($breve, true) {
+      @include fixed-fluid-layout(300px, $base-spacing, article--body, article--aside, last);
+    }
+
+  }
+
+  // {article--ASIDE}@
+  //////////////////////////////
+
+
+  //////////////////////////////
+  // @{article--REVERSE}
+  // Styling for media Components
+
+  .#{$article-class}--REVERSE {
+
+    .#{$article-class}--aside {
+      @include breakpoint($crotchet, true) {
+        @include last;
+      }
+    }
+
+  }
+
+  // {article--REVERSE}@
+  //////////////////////////////
+
+}

@@ -1,0 +1,56 @@
+@mixin encircle(
+  $dark: $background-dark,
+  $light: $background-light,
+  $link: $link-default,
+  $hover: $link-hover-default
+  ) {
+    & > div {
+      background-color: $light;
+      border-color: $dark;
+      color: $dark;
+    }
+
+    @include link-colors($link, $hover);
+    & > a {
+      background-color: $dark;
+      border-color: $light;
+      &:hover {
+        background-color: $light;
+        border-color: $dark;
+      }
+    }
+
+    & > a {
+      display: block;
+    }
+
+    & > div,
+    & > a {
+      @include transition-duration(0ms);
+      @extend %font-emphasis;
+
+      font-size: modular-scale(-1);
+      line-height: 1.2;
+      text-align: center;
+      text-transform: uppercase;
+
+      border-width: 2px;
+      border-style: solid;
+      border-radius: 50%;
+
+      padding: 0;
+
+      height: $base-spacing*4 + em(6px);
+      width: $base-spacing*4 + em(6px);
+
+      @include breakpoint($crotchet, true) {
+        font-size: modular-scale(0);
+        height: $base-spacing*5;
+        width: $base-spacing*5;
+        padding-left: $base-spacing/2;
+        padding-right: $base-spacing/2;
+      }
+
+    }
+
+}

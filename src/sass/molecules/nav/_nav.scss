@@ -1,0 +1,130 @@
+//////////////////////////////
+// Nav Molecule
+
+// @import "mixins";
+@import "extends";
+//////////////////////////////
+
+@mixin cola-nav {
+
+  .nav {
+    @extend %nav;
+    &--title {
+      @extend %nav--title;
+    }
+
+    /*
+     * Columise menu
+     */
+    .col {
+      padding-left: 0;
+    }
+    &--2COL {
+      @include full;
+      .col {
+        @include span(1 of 2 0);
+      }
+      .col2 {
+        @include last;
+        text-align: right;
+      }
+    }
+    &--3COL {
+      @include full;
+      .col {
+        @include span(1 of 3 0);
+      }
+      .col2 {
+        text-align: center;
+      }
+      .col3 {
+        @include last;
+        text-align: right;
+      }
+    }
+    &--4COL {
+      @include full;
+      .col {
+        @include span(1 of 4 0);
+      }
+      .col2,
+      .col3 {
+        text-align: center;
+      }
+      .col4 {
+        text-align: right;
+      }
+      .col4 {
+        @include last;
+      }
+    }
+
+    /*
+     * Specific menu aspects
+     */
+    &--menu-partners {
+      .nav--title {
+        margin-bottom: modular-scale(-0.2);
+      }
+    }
+  }
+
+  .nav--ICON-TEXT {
+    @extend %nav;
+    @extend %nav--INLINE;
+    @extend %nav--CENTER;
+    padding-top: 0;
+  }
+
+  .nav--ICON {
+    @extend .nav--ICON-TEXT;
+    .icon--text {
+      @extend %element-invisible;
+    }
+  }
+
+  .nav--TOC {
+    @extend %nav;
+    @extend %nav--INLINE;
+    @extend %nav--CENTER;
+    @extend %nav--BG;
+  }
+
+  .nav--SECONDARY {
+    @extend %nav;
+    @extend %nav--INLINE;
+    @extend %nav--CENTER;
+    width: 100%;
+    a {
+      font-size: modular-scale(-1);
+    }
+  }
+
+  .nav--IMAGE {
+    @extend %nav--IMAGE;
+    @extend %nav--INLINE;
+    @extend %nav--CENTER;
+    .nav--title {
+      margin-bottom: modular-scale(-0.2);
+    }
+  }
+
+  .nav--NO-ICON {
+    .icon {
+      &:before {
+        content: "";
+        display: none;
+        margin: 0;
+      }
+      div,
+      span {
+        @extend %element-invisible;
+      }
+    }
+  }
+
+  .nav--LAST {
+    margin-bottom: modular-scale(0);
+  }
+
+}

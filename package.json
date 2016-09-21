@@ -1,0 +1,42 @@
+{
+  "name": "cola",
+  "version": "1.0.0",
+  "author": {
+    "name": "Pete Ainsworth",
+    "url": "http://peteainsworth.com"
+  },
+  "maintainers": [
+    {
+      "name": "Pete Ainsworth",
+      "email": "pete@peteainsworth.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:peteainsworth/cola.git"
+  },
+  "dependencies": {
+    "bower": "^1.7.9",
+    "del": "^2.1.0",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-install": "^0.6.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-sass": "^2.1.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "node-bourbon": "^4.2.3",
+    "node-neat": "^1.7.2",
+    "node-sass-import-once": "^1.2.0",
+    "vinyl": "^1.1.1"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=5.10.1"
+  },
+  "preferGlobal": true,
+  "private": true
+  ,
+  "scripts": {
+    "postinstall": "npm install -g gulp bower"
+  }
+}

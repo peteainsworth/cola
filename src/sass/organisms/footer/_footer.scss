@@ -1,0 +1,43 @@
+//////////////////////////////
+// Footer Organism
+
+// @import "mixins";
+// @import "extends";
+//////////////////////////////
+
+@mixin cola-footer {
+
+  ._footer {
+    @extend %section-border-top;
+    @include inverted;
+    text-align: center;
+
+    &--ad-unit {
+      display: none;
+    }
+
+    &--AD {
+      ._footer--ad-unit {
+        display: block;
+        padding-bottom: $base-spacing*2;
+      }
+      @include breakpoint($crotchet, true) {
+        @include fixed-fluid-layout(em(300px), em(20px), _footer--ad-unit, _footer--content);
+        ._footer--content {
+          .nav--SECONDARY {
+            .nav--header,
+            .menu {
+              text-align: left;
+            }
+          }
+          border-left: em(1px) solid $border-color;
+          @include padding-page;
+          @include breakpoint($breve, true) {
+            border-right: em(1px) solid $border-color;
+          }
+        }
+      }
+    }
+  }
+
+}

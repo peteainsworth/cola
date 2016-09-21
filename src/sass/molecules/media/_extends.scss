@@ -1,0 +1,162 @@
+//////////////////////////////
+// Media Extends
+// molecules/media/_media.scss
+//////////////////////////////
+
+%#{$media-class} {
+  @include clearfix-me(micro);
+
+  &:hover, &.active {
+    text-decoration: none;
+  }
+}
+
+%#{$media-class}--wrapper-link {
+  display: block;
+}
+
+%#{$media-class}--text {
+  background-color: $background-light;
+  @at-root .loading & {
+    display: none;
+  }
+  .button {
+    margin-top: em(1px);
+  }
+}
+
+%#{$media-class}--title {
+  @extend %font-title;
+  margin-top: $base-spacing/2;
+}
+
+%#{$media-class}--title--LINKED {
+  font-size: modular-scale(0);
+}
+
+%#{$media-class}--subtitle {
+  @extend %font-body;
+  margin: 0;
+  text-transform: none;
+}
+
+%#{$media-class}--object {
+  @extend %base--image--BORDER;
+  display: block;
+  width: 100%;
+}
+
+// INLINE aspect
+
+%#{$media-class}-overflow {
+  zoom: 1;
+  overflow: hidden;
+}
+
+%#{$media-class}-table-display {
+  @include breakpoint($semiquaver, true) {
+    display: table-cell;
+    vertical-align: top;
+  }
+}
+
+%#{$media-class}--image--INLINE {
+  @extend %#{$media-class}-table-display;
+}
+
+%#{$media-class}--text--INLINE {
+  padding-left: $base-spacing;
+  padding-right: $base-spacing;
+  width: 10000px;
+}
+
+.#{$media-class}--text--INLINE--MIDDLE {
+  vertical-align: middle;
+}
+
+.#{$media-class}--text--INLINE--BOTTOM {
+  vertical-align: bottom;
+}
+
+// OVERLAY aspect
+
+%#{$media-class}--wrapper--OVERLAY {
+  display: block;
+  position: relative;
+}
+
+%#{$media-class}--text--OVERLAY {
+  @include inverted (
+    $background: transparent,
+    $text: $link-inverted,
+    $link: $link-inverted,
+    $link-hover: $link-inverted
+  );
+
+  margin-top: 0;
+  margin-bottom: 0;
+  @include transparent($media-overlay, .2);
+  @include transition(background, .5s);
+  text-shadow: 1px 1px 1px $media-text-shadow;
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 100%;
+
+  @at-root &:hover {
+    background: none;
+    @include transparent($media-overlay, 0);
+  }
+}
+
+%#{$media-class}--title--OVERLAY {
+  font-size: modular-scale(-2);
+  padding-top: $base-spacing/2;
+  padding-bottom: $base-spacing/4;
+  margin-left: $base-spacing*2;
+  margin-right: $base-spacing*2;
+  border-bottom: 1px solid white;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+%#{$media-class}--subtitle--OVERLAY {
+  font-size: modular-scale(-1);
+  padding: $base-spacing/2;
+  bottom: 0;
+  margin-top: 0;
+  position: absolute;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+// BANNER aspect
+
+%#{$media-class}--image--BANNER {
+  margin-left: em(3px);
+  margin-right: em(3px);
+}
+
+%#{$media-class}--text--BANNER {
+  position: relative;
+  @include breakpoint(max-width $crotchet, true) {
+    margin-top: 0;
+  }
+  @include breakpoint($crotchet, true) {
+    position: absolute;
+    bottom: $base-spacing;
+    width: 100%;
+  }
+}
+
+%#{$media-class}--title--BANNER {
+  margin-top: 0;
+}
+
+%#{$media-class}--text--BANNER--HERO {
+  bottom: $base-spacing*1.5;
+}

@@ -1,0 +1,51 @@
+/**
+* @desc         Aligning text
+* @name         textAlign
+* @author       
+* @tested       
+* @requires     
+*/
+
+// horizontal alignment
+%txtC {
+  text-align: center;
+}
+.txtC {
+  @extend %txtC;
+}
+
+%txtL {
+  text-align: left;
+}
+.txtL {
+  @extend %txtL;
+}
+
+%txtR {
+  text-align: right;
+}
+.txtR {
+  @extend %txtR;
+}
+
+// vertical alignment
+%txtT {
+  vertical-align: top;
+}
+.txtT {
+  @extend %txtT;
+}
+
+%txtB {
+  vertical-align: bottom;
+}
+.txtB {
+  @extend %txtB;
+}
+
+%txtM {
+  vertical-align: middle;
+}
+.txtM {
+  @extend %txtM;
+}

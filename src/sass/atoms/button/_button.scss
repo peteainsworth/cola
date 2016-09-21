@@ -1,0 +1,136 @@
+//////////////////////////////
+// Button Atom
+@import "mixins";
+@import "extends";
+//////////////////////////////
+
+@mixin cola-button {
+
+  /* Resets button style */
+  button {
+    @extend %button--reset;
+  }
+
+  /* Base Button */
+  .btn,
+  .button,
+  .more-link a,
+  input[type="submit"],
+  input[type="button"],
+  button {
+    @extend %button;
+  }
+
+  .button {
+
+    /* Fill width of container */
+    &--FULL {
+      @extend %button--FULL;
+      clear: both;
+    }
+
+    /* Half width of container */
+    &--HALF {
+      @extend %button--HALF;
+    }
+
+    /* Floats */
+    &--LEFT {
+      @extend %button--LEFT;
+    }
+    &--RIGHT {
+      @extend %button--RIGHT;
+    }
+
+    &--FIRST {
+      @extend %button--FIRST;
+    }
+    &--SECOND {
+      @extend %button--SECOND;
+    }
+    &--THIRD {
+      @extend %button--THIRD;
+    }
+
+    /* Inherit sizing from parent */
+    &--NATURAL {
+      @extend %button--NATURAL;
+    }
+
+    /* Extra height button */
+    &--TALL {
+      @extend %button--TALL;
+    }
+
+    /* Button without margins */
+    &--INSET {
+      @extend %button--INSET;
+    }
+
+    /* Button Functions */
+    &--PRIMARY {
+      @extend %button--PRIMARY;
+    }
+
+    &--SECONDARY {
+      @extend %button--SECONDARY;
+    }
+
+    &--POSITIVE {
+      @extend %button--POSITIVE;
+    }
+
+    &--NEGATIVE {
+      @extend %button--NEGATIVE;
+    }
+
+    &--DISABLED {
+      @extend %button--DISABLED;
+    }
+
+    /* Adjacent buttons should have some space between them. */
+    & + &,
+    & + a {
+      margin-left: 1em;
+    }
+
+    /* Adjacent buttons should have some space between them. */
+    &--FULL + &--FULL,
+    &--HALF + &--HALF,
+    &--HALF + &--FULL,
+    &--FULL + &--HALF &--HALF + &--FIRST,
+    &--FULL + &--FIRST,
+    &--FIRST + &--SECOND,
+    &--SECOND + &--THIRD {
+      margin-left: 0;
+    }
+
+    &--FULL + &--FULL,
+    &--FULL + &--HALF,
+    &--FULL + &--HALF + &--HALF,
+    &--FULL + &--FIRST,
+    &--FULL + &--FIRST + &--SECOND,
+    &--FULL + &--FIRST + &--SECOND + &--THIRD,
+    &--HALF + &--FULL,
+    &--HALF + &--HALF + &--HALF,
+    &--HALF + &--HALF + &--HALF + &--HALF,
+    &--HALF + &--FIRST,
+    &--HALF + &--FIRST + &--SECOND,
+    &--HALF + &--FIRST + &--SECOND + &--THIRD,
+    &--THIRD + &--FULL,
+    &--THIRD + &--HALF,
+    &--THIRD + &--HALF + &--HALF,
+    &--THIRD + &--FIRST,
+    &--THIRD + &--FIRST + &--SECOND,
+    &--THIRD + &--FIRST + &--SECOND + &--THIRD,
+     {
+      margin-top: 3px;
+    }
+  }
+
+  /* Button theming overrides */
+  .more-link {
+    @extend %button--MORE-LINK;
+  }
+
+}
