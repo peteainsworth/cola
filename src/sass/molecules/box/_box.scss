@@ -1,0 +1,61 @@
+//////////////////////////////
+// Box Molecule
+//@import "mixins";
+@import "extends";
+//////////////////////////////
+
+@mixin cola-box {
+
+  .#{$box-class} {
+
+    @extend %#{$box-class};
+
+    &--head,
+    &--foot {
+      @include clearfix-me(micro);
+    }
+
+    &--head {
+      @extend %#{$box-class}--head;
+      .#{$box-class}--UNDERLINE {
+        @extend %#{$box-class}--head--UNDERLINE;
+      }
+    }
+
+    &--body {
+      @extend %#{$box-class}--body;
+    }
+
+    &--foot {
+      p {
+        margin: 0;
+      }
+    }
+
+    &--CENTER {
+      @extend %#{$box-class}--CENTER;
+    }
+
+    &--MENU,
+    &--COLLAPSIBLE {
+      .#{$box-class}--head,
+      .#{$box-class}--body {
+
+      }
+      .#{$box-class}--head {
+        h1, h2, h3, h4 {
+        }
+      }
+    }
+
+    &--MENU {
+      .#{$box-class}--body {
+      }
+    }
+    &--COLLAPSIBLE {
+      .#{$box-class}--body {
+      }
+    }
+  }
+
+}

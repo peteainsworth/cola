@@ -1,0 +1,132 @@
+//////////////////////////////
+// Typography Atom
+@import "mixins";
+@import "extends";
+//////////////////////////////
+
+// Headings
+@mixin cola-typography {
+
+  #{h1, h2, h3, h4, h5, h6} {
+    @extend %base--header;
+  }
+
+  h1 {
+    @extend %base--h1;
+  }
+
+  h2 {
+    @extend %base--h2;
+  }
+
+  h3 {
+    @extend %base--h3;
+  }
+
+  h4 {
+    @extend %base--h4;
+  }
+
+  h5 {
+    @extend %base--h5;
+  }
+
+  h6 {
+    @extend %base--h6;
+  }
+
+  > h2:first-child {
+    padding-top: 0;
+  }
+
+  // Anchors
+
+  a,
+  .ui-widget-content a {
+    @extend %base--a;
+  }
+
+  // Lists
+
+  ul {
+    @extend %base--list;
+    @extend %base--ul;
+    &.inline {
+      @extend %base--ul--INLINE;
+    }
+    &.menu {
+      @extend %base--ul--MENU;
+    }
+  }
+
+  ol {
+    @extend %base--list;
+    @extend %base--ol;
+  }
+
+  li {
+    @extend %base--li;
+  }
+  ol ul,
+  ul ul {
+    @extend %base--first-nested-list;
+  }
+
+  ol ul ul,
+  ul ul ul {
+    @extend %base--second-nested-list;
+  }
+
+  // Paragraphs
+
+  p {
+    @extend %base--p;
+
+    code {
+      @extend %base--inline-code;
+    }
+  }
+
+  em {
+    @extend %base--em;
+  }
+
+  strong, b {
+    @extend %base--strong;
+  }
+
+  blockquote {
+    @extend %base--blockquote;
+  }
+
+  small {
+    @extend %base--small;
+  }
+
+  hr {
+    margin-bottom: $base-spacing;
+    margin-top: $base-spacing*1.5;
+    border: 0;
+    height: 0;
+    border-top: 1px solid $blue;
+    border-bottom: none;
+  }
+
+  code {
+    @extend %base--code;
+  }
+
+  @include selection {
+    background-color: $highlight;
+    text-shadow: none;
+  }
+
+  .node-fr-ct-standard .field-label {
+    @include element-hidden;
+  }
+
+  .shadow {
+    @extend %shadow;
+  }
+
+}

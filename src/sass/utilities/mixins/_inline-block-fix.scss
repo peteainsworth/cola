@@ -1,0 +1,28 @@
+/**
+ * Make elements into inline-block with IE7 fix. Use it only when you need to make a
+ * block level element inline-block. Elements that are inline by default won't need the
+ * IE7 fix.
+ *
+ * Usage            @extend %inline-block-fix;
+ *
+ */
+
+@mixin inline-block-fix {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: top;
+}
+
+%inline-block-fix {
+  @include inline-block-fix;
+}
+
+@mixin inline-block-revert {
+  display: block;
+  *display: block;
+}
+
+%inline-block-revert {
+  @include inline-block-revert;
+}

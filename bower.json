@@ -1,0 +1,14 @@
+{
+  "name": "cola",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "breakpoint-sass": "~2.6.1",
+    "sass-toolkit": "~2.9.0",
+    "style-prototype": "~2.0.0",
+    "susy": "~2.2.5",
+    "jacket": "~1.1.1"
+  },
+  "devDependencies": {
+  }
+}

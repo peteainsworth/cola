@@ -1,0 +1,371 @@
+//////////////////////////////
+//  Cola settings
+//////////////////////////////
+//
+//  Table of Contents:
+//
+//  1. Colours
+//  2. Grid
+//  3. Susy
+//  4. Borders
+//  5. Typography
+//  6. Breakpoints
+//  7. Button
+//  9. Table
+//  10. Box
+//  11. Media
+//  12. Article
+//  13. Off Canvas
+//  14. Grids
+//
+//////////////////////////////
+
+//------------
+//  1. Colours
+//------------
+
+// Base colours
+$black: #231f20 !default;
+$blue: blue !default;
+$green: green !default;
+$orange: orange !default;
+$pink: pink !default;
+$purple: purple !default;
+$red: red !default;
+$registration: #000000 !default;
+$white: #FFFFFF !default;
+$yellow: yellow !default;
+
+// Light
+$light-grey: #999 !default;
+
+// Mid
+$mid-grey: #666 !default;
+
+// Dark
+$dark-grey: #333 !default;
+
+// Social
+$twitter-blue: #27A9E1 !default;
+$facebook-blue: #3b5998 !default;
+$youtube-red: #bb0000 !default;
+$spotify-green: #84BD00 !default;
+$google-plus-red: #dd4b39 !default;
+$linkedin-blue: #007bb6 !default;
+$instagram-blue: #517fa4 !default;
+$pinterest-red: #cb2027 !default;
+$pinterest-white: #E9E9E9 !default;
+$vine-green: #00bf8f !default;
+$snapchat-yellow: #fffc00 !default;
+$quora-burgundy: #a82400 !default;
+$flickr-pink: #ff0084 !default;
+$tumblr-dark-turquoise: #32506d !default;
+$vimeo-green: #aad450 !default;
+$foursquare-blue: #0072b1 !default;
+$soundcloud-orange: #f50 !default;
+
+// Components
+$border-color: $black !default;
+
+//---------
+//  2. Grid
+//---------
+
+//$demisemihemidemisemiquaver:
+//$semihemidemisemiquaver:
+$hemidemisemiquaver: 260px !default;
+$demisemiquaver: 360px !default;
+$demisemisemiquaver: 420px !default;
+$semiquaver: 480px !default;
+$quaver: 600px !default;
+$crotchet: 670px !default;
+$minim: 800px !default;
+$semibreve: 900px !default;
+$breve: 960px !default;
+$longa: 1120px !default;
+$maxima: 1300px !default;
+
+$page-width: 1080px !default;
+$page-width-inner: 860px !default;
+
+$base-spacing: em(20px) !default;
+
+//---------
+//  3. Susy
+//---------
+
+$susy: (
+  flow: ltr, // ltr | rtl
+  output: float, // float | isolate
+  math: fluid, // fluid | static (requires column-width)
+  column-width: false, // false | value
+  container: auto, // length or % | auto
+  container-position: center, // left | center | right | <length> [*2] (grid padding)
+  last-flow: to, // from | to
+  columns: 4,
+  gutters: .25,
+  gutter-position: after, // before | after | split | inside | inside-static (requires column-width)
+  global-box-sizing: content-box, // content-box | border-box (affects inside/inside-static)
+  debug: (
+    image: hide, //show | hide | show-columns | show-baseline
+    color: rgba(#66f, .25),
+    output: background, // background | overlay
+    toggle: top right,
+  ),
+  use-custom: (
+    background-image: true, // look for background-image mixin
+    background-options: false, // look for background-size, -origin and -clip and other compass/bourbon mixins
+    box-sizing: false, // look for custom bix sizing mixin
+    clearfix: false, // true = look for internal clearfix before using micro clearfix
+    rem: false, // look for rem mixin
+  )
+);
+
+//---------
+//  4. Borders
+//---------
+
+$section-border-top: 1px solid $border-color !default;
+$section-border-bottom: 1px solid $border-color !default;
+
+//---------
+//  5. Typography
+//---------
+
+$sans: Arial, Helvetica, sans-serif !default;
+$sans-italic: Arial, Helvetica, sans-serif !default;
+$sans-bold: Arial, Helvetica, sans-serif !default;
+$sans-bold-italic: Arial, Helvetica, sans-serif !default;
+$sans-title: "Arial Black", Gadget, sans-serif !default;
+$mono: "Lucida Console", Monaco, monospace !default;
+
+$weight-regular: 400 !default;
+$weight-title: 500 !default;
+$weight-bold: 700 !default;
+
+$base-line-height: 1.4 !default;
+$heading-line-height: 1.2 !default;
+
+$em-base: 16px !default;
+$modular-scale-ratio: $minor-third !default;
+$modular-scale-base: 1em !default;
+
+/* Colours */
+$text-default: $registration !default;
+$text-inverted: $white !default;
+$background-light: $white !default;
+$background-dark: $dark-grey !default;
+$background-mid: $mid-grey !default;
+$background-header: $dark-grey !default;
+$link-default: $blue !default;
+$link-hover-default: $red !default;
+$link-inverted: $white !default;
+$link-hover-inverted: $yellow !default;
+$link-active-inverted: $yellow !default;
+$highlight: tint($link-default, 50%) !default;
+$link-deep: $blue !default;
+
+//---------
+//  6. Breakpoints
+//---------
+
+$hemidemisemiquaver: em(260px) !default;
+$demisemiquaver: em(360px) !default;
+$semiquaver: em(480px) !default;
+$quaver: em(704px) !default;
+$crotchet: em(800px) !default;
+$minim: em(960px) !default;
+$semibreve: em(1120px) !default;
+$breve: em(1200px) !default;
+$longa: em(1400px) !default;
+//$maxima:
+
+$page-width: em(1000px) !default;
+$page-width-inner: em(860px) !default;
+
+/* Set consistent vertical and horizontal spacing units. */
+$base-spacing: em(20px) !default;
+
+//---------
+//  7. Button
+//---------
+
+$button-background-default: $blue !default;
+$button-background-hover-default: $red !default;
+$button-text-default: $white !default;
+$button-text-hover-default: $white !default;
+$button-border-default: $blue !default;
+$button-border-hover-default: $red !default;
+
+$button-background-inverted-default: $white !default;
+$button-background-hover-inverted-default: $white !default;
+$button-text-inverted-default: $blue !default;
+$button-text-hover-inverted-default: $red !default;
+$button-border-inverted-default: $white !default;
+$button-border-hover-inverted-default: $white !default;
+
+$button-background-disabled: $light-grey !default;
+
+//---------
+//  8. Form
+//---------
+
+$border-width: 2px !default;
+
+/* Colours */
+$form-background-default: $white !default;
+$input-text-default: $mid-grey !default;
+$label-text-default: $mid-grey !default;
+$input-border-default: $mid-grey !default;
+$input-focus-default: $mid-grey !default;
+$input-success-default: $mid-grey !default;
+$input-error-default: $red !default;
+$radio-empty-default: $mid-grey !default;
+$radio-fill-default: $mid-grey !default;
+$input-disabled-default: $light-grey !default;
+$fieldset-container-background-default: $white !default;
+$fieldset-container-border-default: $white !default;
+$fieldset-background-default: $light-grey !default;
+$legend-background-default: $mid-grey !default;
+$legend-text-default: $white !default;
+
+//---------
+//  9. Table
+//---------
+
+$table-head-background-default: transparent !default;
+$table-head-border-default: $black !default;
+$table-head-text-default: $black !default;
+$table-row-background-odd-default: $light-grey !default;
+$table-row-background-even-default: $white !default;
+$table-row-border-default: $black !default;
+$table-row-text-default: $black !default;
+$table-row-background-hover-default: transparent !default;
+$table-row-text-hover-default: transparent !default;
+
+//---------
+//  10. Box
+//---------
+
+$box-class: box !default;
+
+/* Colours */
+$box-border-color: $mid-grey !default;
+$box-background-color: $background-light !default;
+
+/* Styles */
+$box-border: 2px solid $box-border-color !default;
+
+//---------
+//  11. Media
+//---------
+
+$media-border-default: $link-default !default;
+$media-border-hover-default: $link-hover-default !default;
+
+$media-class: media !default;
+
+$media-overlay: $registration !default;
+$media-text-shadow: $registration !default;
+
+//---------
+//  12. Article
+//---------
+
+$article-class: article !default;
+
+/* Colours */
+$background-colour-article: $background-light !default;
+$border-colour-article: $mid-grey !default;
+
+/* Styles */
+$border-article: 2px solid $border-colour-article !default;
+
+//---------
+//  13. Off Canvas
+//---------
+
+$tabbar-bg: $background-dark !default;
+$tabbar-height: 50px !default;
+$tabbar-height-short: 40px !default;
+$tabbar-icon-width: $tabbar-height !default;
+$tabbar-line-height: $tabbar-height !default;
+$tabbar-line-height-short: $tabbar-height-short !default;
+$tabbar-triangle-width: 36px !default;
+$tabbar-color: $text-inverted !default;
+$tabbar-middle-padding: 10px !default;
+$tabbar-border: em(1px) $background-dark solid !default;
+
+// Off Canvas Divider Styles
+$tabbar-left-section-border: none !default;
+$tabbar-right-section-border: $tabbar-left-section-border;
+
+// Off Canvas Tab Bar Headers
+$tabbar-header-color: $text-inverted !default;
+$tabbar-header-bg: $background-mid !default;
+$tabbar-header-line-height: $tabbar-line-height !default;
+$tabbar-header-margin: 0 !default;
+
+// Off Canvas Menu Variables
+$off-canvas-width: span(10 of 12) !default;
+$off-canvas-bg: $background-dark !default;
+$off-canvas-bg-hover: scale-color($tabbar-bg, $lightness: -30%) !default;
+
+// Off Canvas Menu List Variables
+$off-canvas-label-padding: em(15px) !default;
+$off-canvas-label-color: $text-inverted !default;
+$off-canvas-label-text-transform: uppercase !default;
+$off-canvas-label-bg: $background-dark !default;
+$off-canvas-label-border-top: em(1px) solid scale-color($off-canvas-label-bg, $lightness: 14%) !default;
+$off-canvas-label-border-bottom: none !default;
+$off-canvas-label-margin:0 !default;
+$off-canvas-link-color: rgba($white, 0.7) !default;
+$off-canvas-link-border-bottom: em(1px) solid scale-color($off-canvas-bg, $lightness: -25%) !default;
+$off-canvas-back-bg: #444 !default;
+$off-canvas-back-border-top: $off-canvas-label-border-top !default;
+$off-canvas-back-border-bottom: $off-canvas-label-border-bottom !default;
+$off-canvas-back-hover-bg: scale-color($off-canvas-back-bg, $lightness: -30%) !default;
+$off-canvas-back-hover-border-top: em(1px) solid scale-color($off-canvas-label-bg, $lightness: 14%) !default;
+$off-canvas-back-hover-border-bottom: none !default;
+
+// Off Canvas Menu Icon Variables
+$tabbar-menu-icon-color: $white !default;
+$tabbar-menu-icon-hover: scale-color($tabbar-menu-icon-color, $lightness: -30%) !default;
+
+$tabbar-menu-icon-width: $tabbar-icon-width !default;
+$tabbar-menu-icon-height: $tabbar-height !default;
+$tabbar-menu-icon-padding: 0 !default;
+
+$social-menu-width: em(210px) !default;
+
+// Off Canvas Back-Link Overlay
+$off-canvas-overlay-transition: background 300ms ease !default;
+$off-canvas-overlay-cursor: pointer !default;
+$off-canvas-overlay-border: em(2px) $background-dark solid !default;
+$off-canvas-overlay-box-shadow: em(-4px) 0 em(4px) rgba($black, 0.5), em(4px) 0 em(4px) rgba($black, 0.5) !default;
+$off-canvas-overlay-background: rgba($background-dark, 0.3) !default;
+$off-canvas-overlay-background-hover: rgba($background-dark, 0.05) !default;
+
+// Transition Variables
+$menu-slide: transform 500ms cubic-bezier(0, 0, 0, 0.96);
+
+//---------
+//  14. Grids
+//---------
+
+$grids-class: _grid !default;
+
+$susy-grids: (
+  columns: 12,
+  column-width: 210px,
+  gutter-position: inside-static,
+);
+$susy-grids-padding-whole: (
+  container-position: -$base-spacing
+);
+$susy-grids-padding-half: (
+  container-position: -$base-spacing/2
+);
+$susy-grids-padding-none: (
+  container-position: center
+);

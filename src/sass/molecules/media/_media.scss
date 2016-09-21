@@ -1,0 +1,120 @@
+//////////////////////////////
+// Media Molecule
+// @import "extends";
+@import "extends";
+//////////////////////////////
+
+@mixin cola-media {
+
+  .#{$media-class} {
+    @extend %#{$media-class};
+
+    @at-root a#{&} {
+      @extend %#{$media-class}--wrapper-link;
+    }
+
+    &--image {
+      img {
+        @extend %#{$media-class}--object;
+        @at-root a:hover &,
+        a:active & {
+          @extend %base--image--BORDER--HOVER;
+        }
+      }
+    }
+
+    &--text {
+      @extend %#{$media-class}--text;
+    }
+
+    &--date {
+      font-size: modular-scale(-1);
+      @extend %font-emphasis;
+    }
+
+    &--title {
+      @extend %#{$media-class}--title;
+    }
+
+    & &--title {
+      @extend %#{$media-class}--title--LINKED;
+    }
+
+    &--subtitle {
+      @extend %#{$media-class}--subtitle !optional;
+    }
+
+    &--body {
+      @extend %#{$media-class}--body !optional;
+    }
+  }
+
+
+  .#{$media-class}--INLINE {
+    @extend %#{$media-class}-overflow;
+
+    .#{$media-class}--image {
+      @extend %#{$media-class}-table-display;
+
+      @include breakpoint($semiquaver, true) {
+        img {
+          max-width: initial;
+          width: auto;
+        }
+        + .#{$media-class}--text {
+          padding-left: $base-spacing;
+        }
+      }
+    }
+
+    .#{$media-class}--text {
+      @extend %#{$media-class}-table-display;
+      @extend %#{$media-class}-overflow;
+
+      @include breakpoint($semiquaver, true) {
+        width: 10000px;
+        + .#{$media-class}--image {
+          padding-left: $base-spacing;
+        }
+      }
+    }
+  }
+
+  .#{$media-class}--OVERLAY {
+    @extend %#{$media-class}--wrapper--OVERLAY;
+
+    .#{$media-class}--text {
+      @extend %#{$media-class}--text--OVERLAY;
+    }
+
+    .#{$media-class}--title {
+      @extend %#{$media-class}--title--OVERLAY;
+    }
+
+    .#{$media-class}--subtitle {
+      @extend %#{$media-class}--subtitle--OVERLAY;
+    }
+  }
+
+  .#{$media-class}--BANNER {
+    text-align: center;
+    @extend %#{$media-class}--wrapper--OVERLAY;
+
+    .#{$media-class}--text {
+      @extend %#{$media-class}--text--BANNER;
+    }
+
+    .#{$media-class}--image {
+      @extend %#{$media-class}--image--BANNER;
+    }
+
+    .#{$media-class}--title {
+      @extend %#{$media-class}--title--BANNER;
+    }
+
+    .#{$media-class}--subtitle {
+      @extend %#{$media-class}--title--BANNER;
+    }
+  }
+
+}

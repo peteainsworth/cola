@@ -1,0 +1,56 @@
+//////////////////////////////
+// Navbar Molecule
+
+@import "mixins";
+//@import "extends";
+//////////////////////////////
+
+@mixin cola-navbar {
+
+  .navbar {
+    @include clearfix;
+    @include navbar(50px);
+    &--search {
+      display: none;
+      @at-root .page-line-up-artist-search & {
+        display: block;
+      }
+    }
+    @at-root .page-information-search & {
+      @include element-hidden;
+      &--search {
+        display: block !important;
+      }
+    }
+  }
+
+  .navbar--CENTER {
+    margin-bottom: modular-scale(0);
+    .menu {
+      height: auto;
+      text-align: center;
+      &:before,
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  .navbar--BUTTONS {
+    .menu {
+      .leaf,
+      .expanded {
+        height: auto;
+        a {
+          @extend %button;
+        }
+        &.last {
+          a {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+
+}

@@ -1,0 +1,14 @@
+//////////////////////////////
+// Cola templates
+@import "default/default";
+@import "scroll/scroll";
+@import "grids/grids";
+@import "full/full";
+//////////////////////////////
+
+@mixin cola-templates {
+  @include cola-default;
+  @include cola-scroll;
+  @include cola-grids;
+  @include cola-full;
+}

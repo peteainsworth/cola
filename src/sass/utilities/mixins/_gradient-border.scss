@@ -1,0 +1,29 @@
+$border-width: 1px;
+@mixin gradient-border($border-position: bottom, $gradient-start-color: $logo-orange, $gradient-end-color: $logo-yellow, $gradient-start: 20%, $gradient-end: 80%, $border-width: 1px) {
+  @at-root .cssgradients & {
+    border-#{$border-position}: none;
+    position: relative;
+    @if $border-position == bottom {
+      &:after {
+        content: "";
+        position: absolute;
+        #{$border-position}: -#{$border-width};
+        left: 0;
+        right: 0;
+        height: #{$border-width};
+        @include background-image(linear-gradient(to right, $gradient-start-color $gradient-start, $gradient-end-color $gradient-end));
+      }
+    } @else {
+      &:before {
+        content: "";
+        position: absolute;
+        #{$border-position}: -#{$border-width};
+        left: 0;
+        right: 0;
+        height: #{$border-width};
+        @include background-image(linear-gradient(to right, $gradient-start-color $gradient-start, $gradient-end-color $gradient-end));
+      }
+    }
+    
+  }
+}

@@ -1,0 +1,117 @@
+//////////////////////////////
+// Gallery Molecule
+
+// @import "mixins";
+// @import "extends";
+//////////////////////////////
+
+@mixin cola-gallery {
+
+  .gallery {
+
+  }
+
+  /*
+   * Photo gallery
+   */
+  %photos {
+    clear: both;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .gallery--PHOTOS {
+    .photos {
+      @extend %photos;
+    }
+    .photos--photo {
+      @include inline-block-fix;
+      @include rem(margin-bottom, 10px);
+      max-width: 320px;
+      text-align: center;
+      vertical-align: top;
+      width: 100%;
+      img {
+        display: block;
+      }
+      @include breakpoint($semiquaver, true) {
+        @include rem(margin-left, 5px);
+        @include rem(margin-right, 5px);
+      }
+    }
+    .photos-processed {
+      .photos--photo {
+        display: block;
+      }
+    }
+  }
+  .gallery--photo-page {
+    &--photographer {
+      text-align: center;
+      @include breakpoint($crotchet, true) {
+        text-align: right;
+      }
+    }
+    &--links--INLINE li {
+      margin-right: 0;
+    }
+    .field-fr-photo-photographer {
+      display: inline;
+    }
+  }
+  .gallery--photo-page,
+  #block-views-navigation-views-navigation-links {
+    text-align: center;
+    .links {
+      @include no-bullets;
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      .previous,
+      .back,
+      .next {
+        @include inline-block-fix;
+        float: none;
+        a {
+          @extend %button;
+        }
+      }
+    }
+  }
+
+  /*
+   * Press photos page
+   */
+  .view-display-id-photos_press {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    .views-exposed-form .views-exposed-widgets .views-exposed-widget label {
+      @include element-visible;
+    }
+    .views-row {
+      margin-bottom: $base-spacing*3;
+    }
+    .pager-load-more {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    .photos--image {
+      display: block;
+    }
+    .photos--info {
+      @include inverted;
+      margin-top: 3px;
+      margin-bottom: 3px;
+      padding-top: 3px;
+      padding-bottom: 3px;
+    }
+    .photos--title {
+      margin-bottom: -6px;
+    }
+    .photos--photographer {
+      margin-bottom: 0;
+    }
+  }
+
+}

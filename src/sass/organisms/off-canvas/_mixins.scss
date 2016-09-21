@@ -1,0 +1,198 @@
+//////////////////////////////
+// Off-Canvas Mixins
+// organisms/off-canvas/_off-canvas.scss
+//////////////////////////////
+
+// MIXINS
+// Remove transition flicker on phones
+@mixin kill-flicker {
+  //-webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+}
+
+// Basic properties for the content wraps
+@mixin wrap-base {
+  position: relative;
+  width: 100%;
+}
+
+// basic styles for off-canvas menu container
+@mixin off-canvas-menu($position) {
+  @include kill-flicker;
+  * { @include kill-flicker; }
+  width: $off-canvas-width;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: $off-canvas-bg;
+  z-index: 1001;
+  box-sizing: content-box;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  @include breakpoint($crotchet, true) {
+    overflow-y: hidden;
+  }
+
+  @if $position == left {
+    @include transform(translate(-100%, 0));
+    left: 0;
+  }
+  @if $position == right {
+    @include transform(translate(100%, 0));
+    right: 0;
+  }
+}
+
+// OFF CANVAS WRAP
+// Wrap visible content and prevent scroll bars
+@mixin off-canvas-wrap {
+  @include kill-flicker;
+  @include wrap-base;
+  overflow: hidden;
+  &#{&}--RIGHT,
+  &#{&}--LEFT { min-height: 100%; -webkit-overflow-scrolling: touch; }
+}
+
+// INNER WRAP
+// Main content area that moves to reveal the off-canvas nav
+@mixin inner-wrap {
+  @include kill-flicker;
+  @include wrap-base;
+  @include clearfix;
+  @include transition($menu-slide);
+}
+
+// TAB BAR
+// This is the tab bar base
+@mixin tabbar-base {
+  @include kill-flicker;
+
+  // base styles
+  border-bottom: $tabbar-border;
+  color: $tabbar-color;
+  height: $tabbar-height;
+  line-height: $tabbar-line-height;
+
+  // make sure it's below the .exit-off-canvas link
+  position: relative;
+  // z-index: 999;
+
+  // Typography
+  h1,h2,h3,h4,h5,h6 {
+    background-color: $tabbar-header-bg;
+    color: $tabbar-header-color;
+    margin: $tabbar-header-margin;
+  }
+
+}
+
+// SMALL SECTIONS
+// These are small sections on the left and right that contain the off-canvas toggle buttons;
+@mixin tabbar-small-section($position) {
+  background-color: $tabbar-bg;
+  border-bottom: $tabbar-border;
+  width: $tabbar-icon-width;
+  height: $tabbar-height;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  .off_canvas--RIGHT &,
+  .off_canvas--LEFT & {
+    z-index: 1002;
+  }
+  @if $position == left {
+    border-right: $tabbar-left-section-border;
+    left: 0;
+  }
+  @if $position == right {
+    border-left: $tabbar-right-section-border;
+    right:0;
+  }
+}
+
+@mixin tabbar-section {
+  background-color: $tabbar-bg;
+  border-bottom: $tabbar-border;
+  padding-left: $tabbar-middle-padding;
+  padding-right: $tabbar-middle-padding;
+  position: absolute;
+  height: $tabbar-height;
+  top: 0;
+  @include breakpoint ($crotchet, true) {
+    &.left, &.right { text-align: left; }
+  }
+
+  // still need to make these non-presentational
+  &.left {
+    left: 0;
+    right: $tabbar-icon-width;
+  }
+  &.right {
+    left: $tabbar-icon-width;
+    right: 0;
+  }
+  &.middle {
+    left: $tabbar-icon-width;
+    right: $tabbar-icon-width;
+  }
+}
+
+// OFF CANVAS LIST
+// This is the list of links in the off-canvas menu
+@mixin off-canvas-list {
+  .menu {
+    list-style-type: none;
+    padding:0;
+    margin:0;
+    .leaf,
+    .expanded {
+      label {
+        display: block;
+        padding: $off-canvas-label-padding;
+        color: $off-canvas-label-color;
+        text-transform: $off-canvas-label-text-transform;
+        font-size: modular-scale(-2);
+        background: $off-canvas-label-bg;
+        border-top: $off-canvas-label-border-top;
+        border-bottom: $off-canvas-label-border-top;
+        margin: $off-canvas-label-margin;
+      }
+      a {
+        display: block;
+        border-bottom: $off-canvas-link-border-bottom;
+        line-height: $tabbar-line-height;
+      }
+    }
+  }
+}
+
+// BACK LINK
+// This is an overlay that, when clicked, will toggle off the off canvas menu
+@mixin back-link {
+    @include kill-flicker;
+
+    cursor: $off-canvas-overlay-cursor;
+    border-left: $off-canvas-overlay-border;
+    border-right: $off-canvas-overlay-border;
+
+    // fill the screen
+    background: $off-canvas-overlay-background;
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left:0;
+    right:0;
+    z-index: 1002;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+    &:hover {
+      background: $off-canvas-overlay-background-hover;
+    }
+    @include transition-property(background);
+    @include transition-duration(200ms);
+    @include transition-timing-function(linear);
+    @include transition-delay(0);
+}

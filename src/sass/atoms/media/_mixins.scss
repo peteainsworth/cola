@@ -1,0 +1,12 @@
+//////////////////////////////
+// Media Mixins
+// atoms/media/_media.scss
+//////////////////////////////
+
+@mixin fixed-height-img {
+    img {
+        max-width: 9999%;
+        position: absolute;
+        width: auto !important;
+    }
+}

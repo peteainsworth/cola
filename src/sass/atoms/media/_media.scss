@@ -1,0 +1,19 @@
+//////////////////////////////
+// Media Atom
+@import "mixins";
+@import "extends";
+//////////////////////////////
+
+@mixin cola-media {
+
+  // Images
+  img {
+    @extend %base--image;
+  }
+
+  // Videos
+  .embedded-video .player {
+    @extend %base--video;
+  }
+
+}

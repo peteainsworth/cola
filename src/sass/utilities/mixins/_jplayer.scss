@@ -1,0 +1,58 @@
+@mixin jplayer-small {
+    height: 150px;
+    div.jp-volume-bar {
+        left: 192px;
+    }
+    div.jp-progress {
+        left: 0;
+        margin: 0 auto;
+        position: relative;
+        top: 100px;
+        width: 90%;
+    }
+    div.jp-current-time, div.jp-duration {
+        left: 0;
+        margin: 0 auto;
+        position: relative;
+        top: 105px;
+        width: 90%;
+    }
+    div.jp-duration {
+        margin-top: -18px;
+    }
+    a.jp-mute, a.jp-unmute {
+        top: 72px;
+        left: 16px;
+    }
+    div.jp-volume-bar {
+        top: 77px;
+        left: 42px;
+    }
+}
+
+@mixin jplayer-medium {
+    height: 120px;
+    div.jp-volume-bar {
+        left: 192px;
+    }
+    div.jp-progress {
+        left: 0;
+        margin: 0 auto;
+        position: relative;
+        top: 68px;
+        width: 90%;
+    }
+    div.jp-current-time, div.jp-duration {
+        left: 0;
+        margin: 0 auto;
+        position: relative;
+        top: 75px;
+        width: 90%;
+    }
+    div.jp-duration {
+        margin-top: -18px;
+    }
+    a.jp-mute, a.jp-unmute {
+        left: 166px;
+    }
+}

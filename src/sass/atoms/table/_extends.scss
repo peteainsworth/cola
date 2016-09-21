@@ -1,0 +1,139 @@
+//////////////////////////////
+// Table Extends
+// atoms/table/_table.scss
+//////////////////////////////
+
+%table {
+  display: table;
+  width: 100%;
+  margin-bottom: $base-spacing;
+  max-width: 100%;
+  .sticky-header {
+    background-color: $white;
+    margin-top: 0;
+  }
+  &.hoverable {
+    tbody tr {
+      @include transition(background-color .25s ease);
+      &:hover {
+        background-color: $table-row-background-hover-default;
+        color: $button-text-hover-default;
+      }
+    }
+  }
+  &.centered {
+    thead tr th, tbody tr td {
+      text-align: center;
+
+    }
+  }
+
+  // Responsive Table
+  @include breakpoint(max-width $quaver) {
+    &.responsive-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+      display: block;
+      position: relative;
+
+      th,
+      td {
+        margin: 0;
+        vertical-align: top;
+      }
+
+      th { text-align: left; }
+      thead {
+        display: block;
+        float: left;
+
+        tr {
+          display: block;
+          padding: 0 10px 0 0;
+        }
+      }
+      tbody {
+        display: block;
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+        white-space: nowrap;
+
+        tr {
+          display: inline-block;
+          vertical-align: top;
+        }
+      }
+      th {
+        display: block;
+        text-align: right;
+      }
+      td {
+        display: block;
+        min-height: 24px;
+        text-align: left;
+      }
+      tr { padding: 0 10px; }
+
+      /* sort out borders */
+      thead {
+        border: 0;
+        border-right: 1px solid $table-head-border-default;
+      }
+    }
+  }
+
+}
+
+%th {
+  padding: 9px 18px;
+  background: $white;
+  display: table-cell;
+  @extend %font-title;
+  text-transform: uppercase;
+
+  a,
+  a.active {
+
+    img {
+      margin: 2px 3px;
+    }
+  }
+}
+
+%tr {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: $table-row-border-default;
+  @at-root thead & {
+    border-bottom-color: $table-head-border-default;
+  }
+  &.odd {
+    background: $table-row-background-odd-default;
+  }
+  &.even {
+    background: $table-row-background-even-default;
+  }
+}
+
+%td {
+  display: table-cell;
+  padding: 0.5em 1em;
+
+  /* Tabledrag Handle */
+  .tabledrag-handle {
+    .handle {
+      background: url('../../images/draggable.png') no-repeat 6px 9px;
+      height: 25px;
+      width: 25px;
+      margin: -0.4em 0.5em; /* LTR */
+      padding: 0.42em 0.5em; /* LTR */
+      background-position: 6px 6px;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+}

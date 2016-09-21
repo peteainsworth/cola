@@ -1,0 +1,51 @@
+//////////////////////////////
+// Typography Mixins
+// atoms/typography/_typography.scss
+//////////////////////////////
+
+@mixin typekit-load {
+  @at-root .wf-loading & {
+    /* styles to use before Typekit is loaded */
+   @include element-invisible;
+  }
+  @at-root .wf-active & {
+    /* styles to use after Typekit is loaded */
+   @include element-visible;
+  }
+}
+
+@mixin font-emphasis {
+  font-family: $sans-bold;
+  font-weight: $weight-bold;
+}
+@mixin font-title {
+  font-family: $sans-title;
+  font-weight: $weight-title;
+}
+@mixin font-body {
+  font-family: $sans;
+  font-weight: $weight-regular;
+}
+
+/*
+ * Reference:
+ * $weight-title($normal, $hover, $active, $visited, $focus)
+ */
+
+/*
+ * LINK VARIATIONS
+ */
+@mixin link-colors($link, $link-hover, $link-active: $link-hover) {
+  &:link,
+  &:visited {
+    color: $link;
+    &:hover,
+    &:focus {
+      color: $link-hover;
+    }
+  }
+  &.active,
+  &:active {
+    color: $link-active;
+  }
+}

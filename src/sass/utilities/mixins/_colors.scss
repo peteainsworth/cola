@@ -1,0 +1,24 @@
+/*
+ * INVERTED MIXIN
+ */
+@mixin inverted (
+  $background: $background-dark,
+  $text: $text-inverted,
+  $link: $link-inverted,
+  $link-hover: $link-hover-inverted,
+  $button-background: $button-background-inverted-default,
+  $button-background-hover: $button-background-hover-inverted-default,
+  $button-border: $button-border-inverted-default,
+  $button-border-hover: $button-border-hover-inverted-default,
+  $button-text: $button-text-inverted-default,
+  $button-text-hover: $button-text-hover-inverted-default
+  ) {
+    background-color: $background;
+    color: $text;
+    a {
+      @include link-colors($link, $link-hover);
+    }
+    .btn, .button, .more-link a, input[type="submit"], input[type="button"], button {
+      @include button-colors($button-background, $button-background-hover, $button-text, $button-text-hover, $button-border, $button-border-hover);
+    }
+  }

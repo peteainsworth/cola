@@ -1,0 +1,58 @@
+@mixin fixed-fluid-layout($col-width, $gutter-width, $selector-first: null, $selector-last: null, $static: null) {
+
+  @if $selector-first == first or $selector-first == last {
+    $static: $selector-first;
+    $selector-first: null;
+  }
+  @if $selector-last == first or $selector-last == last {
+    $static: $selector-last;
+    $selector-last: null;
+  }
+
+  @if $static == first or $static == null {
+    %col-first {
+      @include span(1 of 1 ($col-width $gutter-width) static isolate);
+    }
+    %col-last {
+      margin-left: span(1 of 1 ($col-width $gutter-width) static wide);
+    }
+  } @else if $static == last {
+    %col-first {
+      display: table-cell;
+      vertical-align: top;
+    }
+    %col-last {
+      display: table-cell;
+      padding-top: 0;
+      padding-right: 0;
+      padding-bottom: 0;
+      padding-left: $gutter-width;
+      vertical-align: top;
+      width: $col-width;
+    }
+  }
+
+  @if $selector-first == null and $selector-last == null {
+    &--first {
+      @extend %col-first;
+    }
+    &--last {
+      @extend %col-last;
+    }
+  } @else if $selector-last == null {
+    .#{$selector-first}--first {
+      @extend %col-first;
+    }
+    .#{$selector-first}--last {
+      @extend %col-last;
+    }
+  } @else {
+    .#{$selector-first} {
+      @extend %col-first;
+    }
+    .#{$selector-last} {
+      @extend %col-last;
+    }
+  }
+
+}

@@ -1,0 +1,404 @@
+//////////////////////////////
+// Off-Canvas Organism
+@import "mixins";
+//@import "extends";
+//////////////////////////////
+
+@mixin cola-off-canvas {
+
+  ._off-canvas {
+
+    @include off-canvas-wrap;
+    @at-root .lt-ie10 & {
+      min-width: $page-width;
+    }
+
+    &--inner {
+     @include inner-wrap;
+     @include transform(translate(0, 0));
+    }
+
+    ._header {
+      background-color: $background-dark;
+      @at-root .front & {
+        @extend %section-border-bottom;
+      }
+    }
+
+    ._info-section {
+      @include tabbar-base;
+      background-color: $background-mid;
+      padding-top: $base-spacing*0.3;
+      @extend %section-border-bottom;
+      @include breakpoint(0 $hemidemisemiquaver) {
+        padding-top: $base-spacing*0.15;
+        height: auto;
+      }
+      @include breakpoint($crotchet, true) {
+        padding-top: 0;
+        height: $tabbar-height-short;
+        & > .event-details {
+          padding-top: em(2px);
+          line-height: $tabbar-line-height-short;
+        }
+      }
+      @at-root .cssgradients & {
+        &:after {
+          bottom: 0;
+        }
+      }
+      @at-root .lt-ie8 & {
+        z-index: -1;
+      }
+    }
+
+    ._main,
+    ._footer {
+      @include padding-page;
+      padding-top: $base-spacing*2;
+      padding-bottom: $base-spacing;
+      &--container {
+        @include container($page-width);
+      }
+    }
+
+    ._main {
+      @include breakpoint(max-width $crotchet, true) {
+        padding-top: $base-spacing;
+      }
+    }
+
+    /*
+     * Tab bar
+     */
+    &--nav {
+      @include tabbar-base;
+      @include inverted;
+      @at-root .lt-ie8 & {
+        background-color: transparent;
+      }
+      // _off-canvas--nav--left
+      &--left {
+        @include tabbar-small-section($position: left);
+      }
+      // _off-canvas--nav--left
+      &--middle {
+        @include element-invisible;
+        @include breakpoint($hemidemisemiquaver, true) {
+          @include element-visible(absolute);
+          @include tabbar-section;
+          text-align: center;
+        }
+      }
+      // _off-canvas--nav--right
+      &--right {
+        @include tabbar-small-section($position: right);
+        @include breakpoint($crotchet, true) {
+          border-bottom: none;
+          //.icon-social:before {
+          //  content: map-fetch($icons, social-group char);
+          //  font-size: em(16px);
+          //}
+        }
+      }
+
+      @include breakpoint($crotchet, true) {
+        top: $tabbar-height;
+        height: $tabbar-height-short;
+        line-height: $tabbar-line-height-short;
+        margin-bottom: $tabbar-height - $tabbar-height-short;
+        &--left,
+        &--middle {
+          @include element-invisible;
+        }
+        .menu &--right {
+          left: 50%;
+          height: $tabbar-height-short;
+          width: em(140px);
+          z-index: 1;
+
+          &:before,
+          &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+          }
+          &:before {
+            @include triangle($tabbar-triangle-width $tabbar-height-short, $background-dark, up-right);
+            left: -$tabbar-triangle-width + 1px;
+          }
+          &:after {
+            @include triangle($tabbar-triangle-width $tabbar-height-short, $background-dark, up-left);
+            right: -$tabbar-triangle-width + 1px;
+          }
+        }
+        @at-root .nav .menu .leaf#{&}--right,
+                 .nav .menu .expanded#{&}--right {
+          margin-left: em(-70px);
+          margin-top: em(-1px);
+        }
+      }
+
+    }
+    &--toggle[aria-expanded="true"] {
+      @include element-hidden;
+    }
+
+
+    /*
+     * Off-Canvas sections
+     */
+    &--left,
+    &--right {
+      @include off-canvas-list;
+      @include inverted;
+    }
+    &--header {
+      @include tabbar-base;
+      @include inverted;
+    }
+    &--title {
+      font-size: modular-scale(-2);
+      @include element-invisible;
+      @include breakpoint($hemidemisemiquaver, true) {
+        @include element-visible;
+        padding: 0 $tabbar-middle-padding;
+      }
+    }
+
+    // _off-canvas--left
+    &--left {
+      @include off-canvas-menu($position: left);
+      .menu {
+        text-align: center;
+        .menu {
+          @include element-invisible;
+        }
+      }
+      @include breakpoint($crotchet, true) {
+        @include navbar($tabbar-height);
+        border-bottom: $tabbar-border;
+        @include transform(translate(0, 0));
+        bottom: inherit;
+        overflow: hidden;
+        width: 100%;
+        @at-root .js & {
+          position: fixed;
+        }
+        @at-root .navbar-administration &,
+        .admin-menu &,
+        .admin-menu-with-shortcuts &,
+        .lt-ie10 & {
+          position: absolute;
+          z-index: 999;
+        }
+        @at-root .lt-ie8 & {
+          li,
+          .leaf,
+          .expanded {
+            text-align: center;
+          }
+        }
+      }
+      &--container {
+        @include container($page-width-inner);
+        @include breakpoint($crotchet, true) {
+          padding: 0 em(20px);
+        }
+      }
+      & .icon-close {
+        @include tabbar-small-section($position: right);
+      }
+    }
+    &--left &--header {
+      padding-right: $tabbar-icon-width;
+      text-align: center;
+      @include breakpoint($crotchet, true){
+        @include element-invisible;
+      }
+    }
+
+    // _off-canvas--right
+    &--right {
+      @include off-canvas-menu($position: right);
+      @include breakpoint($crotchet, true) {
+        bottom: auto;
+        margin-left: $social-menu-width/2;
+        overflow: hidden;
+        right: 50%;
+        @include transform(translate(50%, -100%));
+        width: $social-menu-width;
+        z-index: 998;
+      }
+      .menu {
+        height: auto;
+        .leaf,
+        .expanded {
+          padding-top: $base-spacing*0.3;
+          display: block;
+          .icon {
+            font-size: em(16px);
+            line-height: 1.6;
+            padding-left: $tabbar-icon-width + $tabbar-middle-padding;
+            &:before {
+              width: $tabbar-icon-width;
+              margin-top: $base-spacing*0.3;
+              color: $link-inverted;
+              margin-bottom: 0;
+              margin-left: 0;
+              margin-right: 0;
+              position: absolute;
+              text-align: center;
+              left: 0;
+              font-size: em(25px);
+              top: inherit;
+              vertical-align: 0%;
+            }
+            &:hover {
+              &:before {
+                color: $link-hover-inverted;
+              }
+            }
+            .subtitle {
+              font-size: modular-scale(-2);
+              color: $white;
+              margin-bottom: $base-spacing/2;
+              margin-top: -$base-spacing/2;
+            }
+          }
+          @at-root .lt-ie8 & {
+            margin-top: em(-6px);
+            padding-top: 0;
+            .icon {
+              padding-left: em(10px);
+              & > div {
+                margin-top: em(-20px);
+              }
+            }
+          }
+          @include breakpoint($hemidemisemiquaver, true) {
+            /*
+            text-align: left;
+            */
+          }
+        }
+      }
+      & .icon-close {
+        @include tabbar-small-section($position: left);
+      }
+    }
+    &--right &--header {
+      padding-left: $tabbar-icon-width;
+    }
+    &--right &--title {
+      @include breakpoint($crotchet, true) {
+        font-size: em(11px);
+        line-height: $tabbar-line-height;
+      }
+    }
+
+
+    /*
+     * Animation classes
+     * These classes are added with JS and trigger the actual animation.
+     */
+
+    // _off-canvas right active
+    &--RIGHT > &--inner {
+      @include transform(translate($off-canvas-width, 0));
+      @include breakpoint($crotchet, true) {
+        @include transform(translate(0, 0));
+      }
+    }
+    &--RIGHT &--exit {
+      @include back-link;
+    }
+
+    // _off-canvas left active
+    &--LEFT > &--inner {
+      @include transform(translate(-$off-canvas-width, 0));
+      @include breakpoint($crotchet, true) {
+        @include transform(translate(0, 0));
+      }
+    }
+    &--LEFT &--exit {
+      @include back-link;
+      @include breakpoint($crotchet, true) {
+        @include element-hidden;
+      }
+    }
+    @include breakpoint($crotchet, true) {
+      &--LEFT &--right {
+        @include transition($menu-slide);
+        @include transform(translate(50%, 0));
+        border-top: $tabbar-border;
+        margin-top: $tabbar-line-height;
+        line-height: $tabbar-line-height;
+      }
+    }
+
+
+    // _off-canvas-overlap
+    &-overlap &--left,
+    &-overlap &--right {
+      @include transform(none);
+      z-index: 1003;
+    }
+    &-overlap &--exit {
+      @include back-link;
+    }
+
+    // _off-canvas-overlap left active
+    &--OVERLAP--LEFT &--right {
+      @include transform(none);
+      z-index: 1003;
+    }
+    &--OVERLAP--LEFT &--exit {
+      @include back-link;
+    }
+
+    // _off-canvas-overlap right active
+    &--OVERLAP--RIGHT &--left {
+      @include transform(none);
+      z-index: 1003;
+    }
+    &--OVERLAP--RIGHT &--exit {
+      @include back-link;
+    }
+
+
+    // Browsers without csstransform support
+    @at-root .no-csstransforms & &--left {
+      left: -($off-canvas-width);
+    }
+    @at-root .no-csstransforms & &--right {
+      right: -($off-canvas-width);
+    }
+    @at-root .no-csstransforms &--LEFT > &--inner {
+      right: $off-canvas-width;
+    }
+
+    @at-root .no-csstransforms &--RIGHT > &--inner {
+      left: $off-canvas-width;
+    }
+
+
+    // lte-IE9 fallback
+    @at-root .lt-ie9 & &--left {
+      left: 0;
+      bottom: auto;
+    }
+    @at-root .lt-ie9 &--LEFT > &--inner {
+      left: 0;
+    }
+    @at-root .lt-ie9 &--LEFT &--right {
+      margin-right: -$social-menu-width / 2;
+      right: 50%;
+      top: 0;
+    }
+
+  }
+  // {off-canvas}@
+  //////////////////////////////
+
+}

@@ -1,0 +1,36 @@
+//////////////////////////////
+// Cola molecules
+@import "box/box";
+@import "breadcrumb/breadcrumb";
+@import "caption/caption";
+@import "event-details/event-details";
+@import "gallery/gallery";
+@import "icon/icon";
+@import "media/media";
+@import "nav/nav";
+@import "navbar/navbar";
+@import "page-links/page-links";
+@import "pager/pager";
+@import "panel/panel";
+@import "partners/partners";
+@import "progress/progress";
+@import "tabs/tabs";
+//////////////////////////////
+
+@mixin cola-molecules {
+  @include cola-box;
+  @include cola-breadcrumb;
+  @include cola-caption;
+  @include cola-event-details;
+  @include cola-gallery;
+  @include cola-icon;
+  @include cola-media;
+  @include cola-nav;
+  @include cola-navbar;
+  @include cola-page-links;
+  @include cola-pager;
+  @include cola-panel;
+  @include cola-partners;
+  @include cola-progress;
+  @include cola-tabs;
+}

@@ -1,0 +1,17 @@
+@mixin break-1 {
+    @include breakpoint($semibreve, true) {
+        margin-left: auto;
+        margin-right: auto;
+        width: 1040px;
+    }
+}
+@mixin break-2 {
+    @include breakpoint($quaver, true) {
+        margin-left: auto;
+        margin-right: auto;
+        width: 700px;
+    }
+    @include breakpoint($semibreve, true) {
+        width: 1040px;
+    }
+}

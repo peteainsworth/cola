@@ -1,0 +1,74 @@
+////////////////////////////
+// Panel Molecule
+
+// @import "mixins";
+// @import "extends";
+//////////////////////////////
+
+@mixin cola-panel {
+
+  .panel-image {
+    @include breakpoint($semibreve, true) {
+      height: 700px;
+      background-repeat: no-repeat;
+      background-position: center bottom;
+      @at-root #block-block-4 & {
+        height: 730px;
+      }
+    }
+    @include breakpoint($maxima, true) {
+      height: auto;
+    }
+    img {
+      display: block;
+      @include breakpoint($semibreve, true) {
+        @include element-invisible;
+      }
+      @include breakpoint($maxima, true) {
+        @include element-visible;
+        margin-left: 0;
+        width: 100%;
+      }
+    }
+  }
+
+  /* Front page landing panel */
+  .field-name-field-fr-front-page-image {
+    max-width: 100%;
+    overflow: hidden;
+    height: auto;
+    width: 100%;
+    img {
+      margin-left: -95%;
+      max-width: initial;
+      width: 250%;
+      @include breakpoint($hemidemisemiquaver, true) {
+        margin-left: -25%;
+        width: 150%;
+      }
+      @include breakpoint($quaver, true) {
+        margin-bottom: $base-spacing*3;
+      }
+      @include breakpoint($maxima, true) {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .parallax {
+    li {
+      list-style-type: none;
+      &:nth-child(odd) {
+        background-color: #be1919;
+      }
+      &:nth-child(even) {
+        background-color: #157759;
+      }
+    }
+  }
+
+  .panel {
+    height: 1500px;
+  }
+
+}

@@ -1,0 +1,31 @@
+//////////////////////////////
+// Navbar Mixins
+// molecules/navbar/_navbar.scss
+//////////////////////////////
+
+// Equidistant dynamic menu inspired by http://css-tricks.com/equidistant-objects-with-css
+@mixin navbar($nav-height) {
+  text-transform: uppercase;
+  .menu {
+    height: em($nav-height);
+    text-align: justify;
+    -ms-text-justify: distribute-all-lines;
+    text-justify: distribute-all-lines;
+    width: 100%;
+    &:after {
+      content: '';
+      width: 100%; /* Ensures there are at least 2 lines of text, so justification works */
+      display: inline-block;
+    }
+    .leaf,
+    .expanded {
+      @include font-emphasis;
+      @include inline-block-fix;
+      @include no-bullet;
+      font-size: modular-scale(0);
+      height: em($nav-height);
+      line-height: 1.9;
+      vertical-align: top;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+//////////////////////////////
+// Front Page
+// @import "mixins";
+// @import "extends";
+//////////////////////////////
+
+@mixin cola-front {
+
+  .front {
+    ._article {
+      text-transform: uppercase;
+      p, #social-menu .menu {
+        @include inverted;
+        border-radius: em(8px);
+        font-size: modular-scale(1);
+        float: left;
+        clear: left;
+        padding: $base-spacing/2 $base-spacing $base-spacing/3;
+        margin-bottom: 0;
+      }
+      p {
+        margin-top: $base-spacing/2;
+      }
+      #social-menu .menu {
+        font-size: modular-scale(0);
+        margin-top: $base-spacing;
+        padding: 0 $base-spacing/2;
+        li {
+          margin: 0;
+        }
+        @include breakpoint($semibreve, true) {
+          margin-top: 0;
+        }
+      }
+      @include breakpoint($semibreve, true) {
+        #social-menu {
+          margin-top: em(76px);
+          position: absolute;
+          top: 0;
+          right: em(80px);
+        }
+      }
+    }
+    &--call-to-action {
+      @include breakpoint($semibreve, true) {
+        position: absolute;
+        bottom: $base-spacing*4;
+        left: $base-spacing*4;
+      }
+    }
+  }
+
+}

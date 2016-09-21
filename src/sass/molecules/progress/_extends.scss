@@ -1,0 +1,37 @@
+//////////////////////////////
+// Progress Extends
+// molecules/progress/_progress.scss
+//////////////////////////////
+
+%progress--bar {
+  background-color: $button-background-default;
+  border: none;
+  border-radius: 0;
+}
+%progress--throbber {
+  background-color: transparent;
+  background-image: url('../images/throbber.gif');
+  background-repeat: no-repeat;
+}
+%progress--filled {
+  background-image: none;
+  background-color: $button-background-hover-default;
+  height: 0.5em;
+  width: 5px;
+}
+%progress--percentage {
+  float: right; /* LTR */
+}
+%ajax-progress {
+  display: inline-block;
+}
+%ajax-progress--throbber {
+  background-position: 0px -18px;
+  float: left; /* LTR */
+  height: 15px;
+  margin: 2px;
+  width: 15px;
+}
+%ajax-progress--message {
+  padding-left: 20px;
+}
